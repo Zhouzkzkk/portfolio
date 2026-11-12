@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script>document.documentElement.className+=' js';</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>周珂 Anne · AIGC 作品集</title>
+<style>
+:root{
+  --bg:#0a0a0e; --bg2:#101016; --card:#14141c; --line:rgba(255,255,255,.09);
+  --tx:#f2f2f0; --tx2:rgba(242,242,240,.62); --tx3:rgba(242,242,240,.4);
+  --acc:#ff4d7e; --acc-soft:rgba(255,77,126,.14);
+  --r:18px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  line-height:1.75;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--acc);color:#0a0a0e}
+.wrap{max-width:1200px;margin:0 auto;padding:0 36px}
+.en{font-family:"Helvetica Neue",Arial,sans-serif;letter-spacing:.14em}
+
+/* ============ 导航 ============ */
+#nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(18px);
+  background:rgba(10,10,14,.72);border-bottom:1px solid var(--line);transition:background .4s}
+#nav .nin{max-width:1240px;margin:0 auto;padding:0 28px;height:58px;display:flex;align-items:center;gap:26px}
+#nav .logo{font-weight:900;font-size:17px;letter-spacing:.06em}
+#nav .logo i{font-style:normal;color:var(--acc);transition:color .5s}
+#nav .links{display:flex;gap:4px;margin-left:auto}
+#nav .links a{font-size:13px;color:var(--tx2);padding:7px 13px;border-radius:99px;transition:.3s;white-space:nowrap}
+#nav .links a:hover{color:var(--tx)}
+#nav .links a.on{color:var(--acc);background:var(--acc-soft)}
+#bar{position:absolute;left:0;bottom:-1px;height:2px;background:var(--acc);width:0;transition:background .5s}
+@media(max-width:860px){#nav .links a{padding:7px 8px;font-size:12px}.nin{gap:10px}}
+
+/* ============ HERO ============ */
+#hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;position:relative;
+  background:radial-gradient(1200px 600px at 75% 20%,rgba(255,77,126,.08),transparent 60%),
+             radial-gradient(900px 500px at 15% 80%,rgba(123,97,255,.07),transparent 60%),var(--bg);overflow:hidden}
+#hero .hw{position:relative;z-index:2;padding:120px 0 60px}
+.big{font-family:"Arial Black","Helvetica Neue",sans-serif;font-weight:900;line-height:.95;letter-spacing:-.01em}
+#hero .t1{font-size:clamp(64px,11vw,150px);text-shadow:0 12px 70px rgba(10,10,14,.9)}
+#hero .t1 b{color:var(--acc)}
+#hero .t1 .dot{color:var(--acc)}
+#hero .script{font-family:"Snell Roundhand","Savoye LET","Brush Script MT",cursive;font-style:italic;
+  font-size:clamp(30px,4.4vw,58px);color:transparent;margin:-8px 0 10px 6px;
+  background:linear-gradient(92deg,#ff8fb1 8%,#f5c86b 48%,#9b8cff 88%);-webkit-background-clip:text;background-clip:text}
+#hero .sub{color:var(--tx2);font-size:clamp(14px,1.6vw,17px);margin-top:26px;display:flex;flex-wrap:wrap;gap:10px 26px;align-items:center}
+#hero .sub b{color:var(--tx);font-weight:600}
+#hero .cta{display:inline-flex;align-items:center;gap:12px;margin-top:44px;padding:14px 30px;border-radius:99px;
+  border:1px solid var(--line);background:rgba(255,255,255,.04);font-size:14px;letter-spacing:.2em;transition:.35s;cursor:pointer}
+#hero .cta:hover{border-color:var(--acc);color:var(--acc);box-shadow:0 0 34px var(--acc-soft)}
+#hero .cards{position:absolute;right:-50px;top:53%;transform:translateY(-50%);width:42%;min-width:380px;z-index:1;perspective:1200px}
+#hero .cards .cd{position:absolute;border-radius:20px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6);
+  border:1px solid rgba(255,255,255,.12);transition:transform .3s ease-out;will-change:transform}
+#hero .cards .cd img{width:100%;height:100%;object-fit:cover}
+#hero .cd1{width:64%;left:0;top:6%;transform:rotate(-7deg)}
+#hero .cd2{width:56%;left:32%;top:34%;z-index:2;transform:rotate(2deg)}
+#hero .cd3{width:62%;left:12%;top:64%;transform:rotate(6deg)}
+#hero .cue{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);z-index:3;color:var(--tx3);
+  font-size:11px;letter-spacing:.3em;text-align:center;animation:bob 2.2s ease-in-out infinite}
+#hero .cue::after{content:"";display:block;width:1px;height:34px;background:linear-gradient(var(--acc),transparent);margin:10px auto 0}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+@media(max-width:960px){#hero .cards{opacity:.28;right:-120px;width:90%}}
+
+/* ============ 章节头 ============ */
+.sec{padding:120px 0}
+.sec-head{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;margin-bottom:14px}
+.chip{font-size:12px;letter-spacing:.3em;color:var(--acc);border:1px solid var(--acc);padding:5px 14px;border-radius:99px;transition:.5s}
+.h2{font-size:clamp(30px,4.6vw,52px);font-weight:900;letter-spacing:.02em}
+.h2 .acc{color:var(--acc);transition:color .5s}
+.sub2{color:var(--tx2);font-size:15px;max-width:760px}
+.divider{border:none;height:1px;background:var(--line);margin:0}
+
+/* ============ 入场动画（.js 由顶部脚本添加：脚本被拦截时内容照常显示，不会整页空白） ============ */
+.js .rv{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.js .rv.in{opacity:1;transform:none}
+.js .rvl{opacity:0;transform:translateX(-40px);transition:1s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.js .rvl.in{opacity:1;transform:none}
+
+/* ============ ABOUT ============ */
+#about .grid{display:grid;grid-template-columns:340px 1fr;gap:44px;margin-top:52px}
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:34px;text-align:center;height:fit-content}
+.pcard .ava{width:132px;height:132px;border-radius:50%;overflow:hidden;margin:0 auto 20px;border:3px solid var(--acc);transition:border-color .5s}
+.pcard h3{font-size:26px;font-weight:800}
+.pcard .en2{color:var(--tx3);font-size:12px;letter-spacing:.3em;margin:4px 0 18px}
+.pcard .row{display:flex;justify-content:space-between;font-size:13.5px;padding:11px 0;border-top:1px dashed var(--line);text-align:left}
+.pcard .row span:first-child{color:var(--tx3)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:18px}
+.tags i{font-style:normal;font-size:12px;color:var(--tx2);border:1px solid var(--line);padding:5px 11px;border-radius:99px;transition:.3s}
+.tags i:hover{color:var(--acc);border-color:var(--acc)}
+.tl{position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--acc),transparent)}
+.tl .ti{position:relative;padding:0 0 30px}
+.tl .ti::before{content:"";position:absolute;left:-29px;top:9px;width:12px;height:12px;border-radius:50%;
+  background:var(--bg);border:3px solid var(--acc);transition:border-color .5s}
+.tl .ti h4{font-size:17px}
+.tl .ti h4 em{font-style:normal;color:var(--acc);font-size:13px;margin-left:12px;transition:color .5s}
+.tl .ti p{color:var(--tx2);font-size:13.5px;margin-top:6px}
+.honors{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.honors div{font-size:13px;color:var(--tx2);padding:10px 14px;background:rgba(255,255,255,.03);border-radius:10px;border:1px solid var(--line)}
+.sk{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.sk i{font-style:normal;font-size:12.5px;padding:6px 13px;border-radius:8px;background:var(--acc-soft);color:var(--tx);transition:.5s}
+.block-t{font-size:12px;letter-spacing:.28em;color:var(--tx3);margin:26px 0 12px}
+@media(max-width:960px){#about .grid{grid-template-columns:1fr}}
+
+/* ============ 数字计数 ============ */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:46px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px 26px;position:relative;overflow:hidden;transition:.35s}
+.stat:hover{transform:translateY(-6px);border-color:var(--acc)}
+.stat::after{content:"";position:absolute;left:0;top:0;width:3px;height:0;background:var(--acc);transition:height .6s .2s}
+.stat.in::after{height:100%}
+.stat .n{font-family:"Arial Black",sans-serif;font-weight:900;font-size:clamp(24px,2.4vw,34px);letter-spacing:-.015em;color:var(--acc);transition:color .5s;white-space:nowrap}
+.stat .n s{text-decoration:none;font-size:.55em;letter-spacing:.02em}
+.stat .l{color:var(--tx2);font-size:13px;margin-top:6px}
+@media(max-width:860px){.stats{grid-template-columns:repeat(2,1fr)}}
+
+/* ============ 条形对比 ============ */
+.bars{margin-top:26px;display:grid;gap:20px}
+.br .bl{display:flex;justify-content:space-between;font-size:13.5px;margin-bottom:9px}
+.br .bl b{color:var(--acc);transition:color .5s}
+.track{height:12px;border-radius:99px;background:rgba(255,255,255,.06);position:relative;overflow:visible}
+.fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:99px;
+  background:linear-gradient(90deg,rgba(255,255,255,.22),var(--acc));transition:width 1.4s cubic-bezier(.2,.7,.2,1)}
+.fill::before{content:"";position:absolute;right:-5px;top:50%;width:14px;height:14px;border-radius:50%;
+  background:var(--acc);transform:translateY(-50%);box-shadow:0 0 18px var(--acc);opacity:0;transition:opacity .4s 1.3s}
+.br.go .fill::before{opacity:1}
+.br .ghost{position:absolute;left:0;top:0;bottom:0;border-radius:99px;background:repeating-linear-gradient(45deg,rgba(255,255,255,.1) 0 6px,transparent 6px 12px)}
+
+/* ============ 通用卡 ============ */
+.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:46px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:46px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:46px;align-items:center}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px;transition:.35s;position:relative;overflow:hidden}
+.card:hover{transform:translateY(-8px);border-color:var(--acc)}
+.card .no{font-family:"Arial Black",sans-serif;font-size:40px;font-weight:900;color:transparent;
+  -webkit-text-stroke:1.5px var(--acc);opacity:.85;transition:.5s}
+.card h4{font-size:16.5px;margin:14px 0 8px}
+.card p{font-size:13px;color:var(--tx2)}
+@media(max-width:960px){.g5{grid-template-columns:repeat(2,1fr)}.g4,.g3{grid-template-columns:1fr 1fr}.g2{grid-template-columns:1fr}}
+@media(max-width:620px){.g4,.g3{grid-template-columns:1fr}}
+
+/* ============ 章节横幅 ============ */
+.banner{margin-top:50px;border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
+.banner img{width:100%}
+
+/* ============ 框内可滑动长图 ============ */
+.vscroll{position:relative;aspect-ratio:4/5;overflow-y:auto;overflow-x:hidden;border-radius:var(--r);
+  background:#0b0b10;scrollbar-width:thin;scrollbar-color:var(--acc) transparent}
+.vscroll::-webkit-scrollbar{width:9px}
+.vscroll::-webkit-scrollbar-track{background:rgba(255,255,255,.05)}
+.vscroll::-webkit-scrollbar-thumb{background:var(--acc);border-radius:9px;border:3px solid #0b0b10}
+.vscroll img{width:100%;height:auto;display:block;cursor:zoom-in}
+figure.vs-wrap{position:relative}
+.vs-hint{position:absolute;left:14px;bottom:14px;z-index:4;display:flex;align-items:center;gap:8px;
+  padding:8px 14px;border-radius:999px;font-size:11.5px;letter-spacing:.1em;color:#fff;
+  background:rgba(10,10,14,.66);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(8px);
+  pointer-events:none;transition:opacity .5s,transform .5s;box-shadow:0 8px 26px rgba(0,0,0,.45)}
+.vs-hint.gone{opacity:0;transform:translateY(10px)}
+.vs-hint i{font-style:normal;font-size:13px;animation:vsBob 1.8s ease-in-out infinite}
+@keyframes vsBob{0%,100%{transform:translateY(-2px)}50%{transform:translateY(2px)}}
+.vs-prog{position:absolute;right:0;top:0;height:3px;background:var(--acc);z-index:4;
+  width:0;pointer-events:none;transition:width .12s linear;box-shadow:0 0 12px var(--acc)}
+
+/* ============ 活动长图横向滑动（四联） ============ */
+.hslide{position:relative;overflow:hidden;border-radius:var(--r);background:#0b0b10}
+.hs-track{display:flex;transition:transform .62s cubic-bezier(.25,.85,.25,1);will-change:transform}
+.hs-slide{flex:0 0 100%;position:relative;min-width:0}
+.hs-arrow{position:absolute;top:50%;z-index:6;width:38px;height:38px;margin-top:-19px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:21px;line-height:1;color:#fff;cursor:pointer;
+  background:rgba(10,10,14,.6);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(8px);
+  transition:background .28s,color .28s,border-color .28s,transform .28s;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.hs-arrow:hover{background:var(--acc);color:#0a0a0e;border-color:var(--acc);transform:scale(1.08)}
+.hs-arrow.prev{left:12px}
+.hs-arrow.next{right:12px}
+.hs-bar{display:flex;align-items:center;gap:14px;padding:14px 2px 0;flex-wrap:wrap}
+.hs-idx{font-size:11.5px;letter-spacing:.22em;color:var(--tx3);flex:none}
+.hs-tabs{display:flex;gap:8px;flex-wrap:wrap}
+.hs-tabs button{font-family:inherit;font-size:12px;letter-spacing:.06em;color:var(--tx2);cursor:pointer;
+  padding:6px 13px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid var(--line);
+  transition:color .28s,background .28s,border-color .28s}
+.hs-tabs button:hover{color:#fff;border-color:rgba(255,255,255,.32)}
+.hs-tabs button.on{color:#0a0a0e;background:var(--acc);border-color:var(--acc);font-weight:600}
+.hs-panel{display:none}
+.hs-panel.on{display:block}
+/* 单列时框会撑满整幅宽，长图会被拉得过高 → 限宽居中 */
+@media(max-width:960px){
+  figure.banner.vs-wrap{max-width:460px;margin-left:auto;margin-right:auto}
+  .hs-bar{justify-content:center}
+}
+@media(max-width:520px){
+  figure.banner.vs-wrap{max-width:340px}
+  .hs-arrow{width:32px;height:32px;margin-top:-16px;font-size:18px}
+  .hs-bar{gap:10px}
+  .hs-tabs button{padding:5px 10px;font-size:11.5px}
+}
+
+/* ============ 全屏视差 HERO ============ */
+.phero{position:relative;height:82vh;min-height:480px;overflow:hidden;display:flex;align-items:flex-end}
+.phero .pimg{position:absolute;inset:-14% 0;background-size:cover;background-position:center;will-change:transform}
+.phero .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,14,.25),rgba(10,10,14,.05) 40%,rgba(10,10,14,.92) 92%)}
+.phero .pt{position:relative;z-index:2;width:100%;padding:0 0 64px}
+.phero .pt .wrap{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.phero h2{font-size:clamp(40px,6.4vw,76px);font-weight:900;text-shadow:0 6px 40px rgba(0,0,0,.7)}
+.phero .pen{color:rgba(255,255,255,.72);letter-spacing:.34em;font-size:clamp(11px,1.2vw,14px);margin-top:12px}
+.phero .pnums{display:flex;gap:34px}
+.phero .pnums div b{font-family:"Arial Black",sans-serif;font-size:clamp(22px,2.6vw,34px);color:var(--acc)}
+.phero .pnums div span{display:block;font-size:12px;color:rgba(255,255,255,.65);margin-top:2px}
+
+/* ============ 拖动画廊 ============ */
+.drag{display:flex;gap:18px;overflow-x:auto;padding:46px 36px 22px;scroll-snap-type:x mandatory;cursor:grab;user-select:none;scrollbar-width:none}
+.drag::-webkit-scrollbar{display:none}
+.drag.grabbing{cursor:grabbing}
+.drag .dc{flex:0 0 auto;scroll-snap-align:center;border-radius:16px;overflow:hidden;border:1px solid var(--line);
+  transition:.35s;position:relative;background:var(--card)}
+.drag .dc:hover{border-color:var(--acc);transform:translateY(-8px)}
+.drag .dc img{height:100%;width:100%;object-fit:cover;pointer-events:none}
+.drag .dc .cap{position:absolute;left:0;right:0;bottom:0;padding:26px 16px 12px;font-size:12px;color:#fff;  background:linear-gradient(transparent,rgba(0,0,0,.85))}
+.hv{height:360px}.hv .dc{height:100%}
+.edge{display:flex;justify-content:space-between;color:var(--tx3);font-size:11px;letter-spacing:.24em;padding:0 40px}
+
+/* ============ 四板块手风琴入口 ============ */
+.acc-gal{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;height:auto;padding:0 2px}
+.ag{position:relative;min-width:0;aspect-ratio:3/4;border-radius:18px;overflow:hidden;border:1px solid var(--line);
+  background:#0b0b10;cursor:pointer;
+  transition:border-color .4s,box-shadow .5s,transform .55s cubic-bezier(.25,.85,.25,1)}
+.ag:hover,.ag.on{border-color:var(--acc);box-shadow:0 24px 70px rgba(0,0,0,.5);transform:translateY(-4px)}
+/* 收起态：该板块首张封面原色展示（参考卡片墙风格）；展开后让位给六宫格 */
+.ag::before{content:'';position:absolute;inset:0;background-image:var(--bg);background-size:cover;background-position:center;
+  opacity:1;transform:scale(1);transition:opacity .5s,transform .9s cubic-bezier(.2,.7,.2,1)}
+.ag:hover::before,.ag.on::before{opacity:.14;transform:scale(1)}
+.ag::after{content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(5,5,9,.22),rgba(5,5,9,0) 26%,rgba(5,5,9,0) 58%,rgba(5,5,9,.74) 96%)}
+/* 收起态文字层：编号徽章在顶部，标题横排在底部 */
+.ag-tag{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:space-between;
+  align-items:flex-start;padding:20px 18px 18px;transition:opacity .35s}
+.ag:hover .ag-tag,.ag.on .ag-tag{opacity:0}
+.ag-no{font-size:11.5px;color:#fff;letter-spacing:.2em;font-weight:700;
+  background:rgba(5,6,12,.5);border:1px solid rgba(255,255,255,.16);padding:4px 12px;border-radius:20px;backdrop-filter:blur(4px)}
+.ag-vn{writing-mode:horizontal-tb;font-size:16.5px;letter-spacing:.14em;color:#fff;font-weight:700;
+  text-shadow:0 2px 16px rgba(0,0,0,.75);white-space:nowrap}
+.ag-cap{display:flex;align-items:center;gap:12px}
+.ag-arr{font-size:14px;color:#fff;opacity:.9;text-shadow:0 2px 14px rgba(0,0,0,.7);
+  width:30px;height:30px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(5,6,12,.35);
+  display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);flex:none}
+.ag-info{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:80px 26px 24px;
+  opacity:0;transform:translateY(16px);transition:opacity .45s .15s,transform .45s .15s}
+.ag:hover .ag-info,.ag.on .ag-info{opacity:1;transform:none}
+.ag-info h4{font-size:20px;color:#fff;margin-bottom:8px}
+.ag-info h4 em{font-style:normal;font-size:12.5px;color:var(--acc);letter-spacing:.12em;margin-left:8px}
+.ag-info p{font-size:12.5px;line-height:1.75;color:rgba(230,238,244,.85)}
+.ag-info b{color:var(--acc)}
+/* — 板块内 6 个模板：3×2 六宫格 — */
+.ag-panels{position:absolute;left:0;right:0;top:0;bottom:0;z-index:2;padding:20px 20px 124px;
+  display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:12px;
+  opacity:0;transform:translateY(16px);pointer-events:none;
+  transition:opacity .5s .12s,transform .55s .12s cubic-bezier(.2,.7,.2,1)}
+.ag:hover .ag-panels,.ag.on .ag-panels{opacity:1;transform:none;pointer-events:auto}
+.ag .tp{position:relative;border-radius:11px;overflow:hidden;border:1px solid rgba(255,255,255,.09);
+  background:#0c0c14;cursor:zoom-in;transition:transform .42s cubic-bezier(.25,.85,.25,1),box-shadow .42s,border-color .42s}
+.ag .tp:hover{transform:translateY(-5px);box-shadow:0 18px 44px rgba(0,0,0,.6);border-color:var(--acc)}
+.ag .tp>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;transform:none;
+  transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.ag .tp:hover>img{transform:scale(1.08)}
+.ag .tp>video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .35s}
+.ag .tp.playing>video{opacity:1}
+.ag .tp.playing>img{opacity:0}
+/* 视频不可用时的动图降级：3 秒小尺寸 GIF 顶替悬停预览 */
+.ag .tp.gifmode.playing>img{opacity:1}
+.ag .tp.gifmode .tp-play{opacity:0}
+.ag .tp.gifmode .tp-cap{opacity:1}
+.tp-n{position:absolute;left:6px;top:6px;z-index:3;font-size:9.5px;letter-spacing:.1em;color:#fff;
+  background:rgba(0,0,0,.5);padding:2px 6px;border-radius:4px;backdrop-filter:blur(4px)}
+.tp-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3;width:34px;height:34px;
+  border-radius:50%;background:rgba(4,6,12,.6);border:1px solid rgba(255,255,255,.28);color:#fff;font-size:11px;
+  display:flex;align-items:center;justify-content:center;transition:.3s;backdrop-filter:blur(4px)}
+.ag .tp:hover .tp-play{background:var(--acc);border-color:var(--acc);color:#0a0a0e;transform:translate(-50%,-50%) scale(1.12)}
+.ag .tp.playing .tp-play{opacity:0}
+.tp-cap{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:20px 8px 7px;font-size:10.5px;letter-spacing:.04em;
+  color:rgba(255,255,255,.9);background:linear-gradient(180deg,rgba(4,6,12,0),rgba(4,6,12,.85));opacity:0;transition:opacity .35s}
+.ag .tp:hover .tp-cap{opacity:1}
+@media(max-width:960px){
+  .acc-gal{grid-template-columns:1fr;gap:12px}
+  .ag-panels{padding:14px 14px 118px;gap:8px}
+  .ag:hover,.ag.on{transform:none}
+  .tp-cap{opacity:1}
+  .ag-vn{font-size:14px;letter-spacing:.1em}
+  .ag-tag{padding:14px 14px 14px}
+  .ag-arr{width:26px;height:26px;font-size:12px}
+}
+
+/* ============ Tabs ============ */
+.tabs{display:flex;gap:10px;margin-top:44px;flex-wrap:wrap}
+.ph-h{display:flex;align-items:baseline;gap:16px;margin-top:84px}
+.ph-h b{font-family:"Arial Black",sans-serif;color:var(--acc);font-size:14px;letter-spacing:.1em;white-space:nowrap}
+.ph-h span{font-size:21px;font-weight:700;color:var(--tx);white-space:nowrap}
+.ph-h::after{content:"";flex:1;height:1px;background:var(--line);align-self:center}
+.tab{padding:12px 24px;border-radius:99px;border:1px solid var(--line);background:transparent;color:var(--tx2);
+  font-size:14px;cursor:pointer;transition:.3s;font-family:inherit}
+.tab:hover{color:var(--tx);border-color:var(--acc)}
+.tab.on{background:var(--acc);border-color:var(--acc);color:#0a0a0e;font-weight:700}
+.panes{margin-top:34px}
+.pane{display:none;animation:fade .6s}
+.pane.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.pane .g2{margin-top:0}
+.pane img{border-radius:var(--r);border:1px solid var(--line)}
+.pane .steps{margin-top:18px;display:grid;gap:12px}
+.pane .steps div{display:flex;gap:14px;font-size:13.5px;color:var(--tx2);background:rgba(255,255,255,.03);
+  border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.pane .steps b{color:var(--acc);font-family:"Arial Black",sans-serif;transition:color .5s}
+
+/* ============ 角色卡 ============ */
+.spec{display:grid;gap:0}
+.spec .row{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:15px 0;border-bottom:1px dashed var(--line);font-size:14px}
+.spec .row span{color:var(--tx3);font-size:12.5px;letter-spacing:.1em;padding-top:2px}
+.spec .row b{font-weight:500;color:var(--tx)}
+.quote{border-left:3px solid var(--acc);padding:6px 0 6px 20px;color:var(--tx2);font-size:14px;margin-top:22px;transition:border-color .5s}
+
+/* ============ 流程时间轴（横向） ============ */
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:46px;position:relative}
+.flow::before{content:"";position:absolute;top:27px;left:6%;right:6%;height:2px;
+  background:repeating-linear-gradient(90deg,var(--acc) 0 10px,transparent 10px 20px);opacity:.4;transition:background .5s}
+.fw{position:relative;padding:0 16px;text-align:center}
+.fw .dot{width:54px;height:54px;border-radius:50%;margin:0 auto;display:flex;align-items:center;justify-content:center;
+  background:var(--bg2);border:2px solid var(--acc);font-family:"Arial Black",sans-serif;font-weight:900;color:var(--acc);
+  font-size:16px;position:relative;z-index:1;transition:.5s}
+.fw:hover .dot{background:var(--acc);color:#0a0a0e;box-shadow:0 0 30px var(--acc-soft)}
+.fw h5{margin:16px 0 6px;font-size:15px}
+.fw p{font-size:12.5px;color:var(--tx2)}
+@media(max-width:860px){.flow{grid-template-columns:1fr 1fr;gap:30px 0}.flow::before{display:none}}
+
+/* ============ 色卡 ============ */
+.swrow{display:flex;border-radius:var(--r);overflow:hidden;height:130px;margin-top:46px;border:1px solid var(--line)}
+.sw{flex-grow:1;position:relative;display:flex;align-items:flex-end;padding:16px;cursor:pointer;transition:flex-grow .5s cubic-bezier(.2,.7,.2,1)}
+.sw:hover{flex-grow:2.4}
+.sw b{font-size:14px;font-weight:700}
+.sw span{display:block;font-size:11.5px;opacity:.75}
+.swatches{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.swatches i{font-style:normal;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);cursor:pointer;transition:.3s;position:relative}
+.swatches i:hover{transform:translateY(-5px) scale(1.08)}
+.swatches i::after{content:attr(data-c);position:absolute;top:calc(100% + 6px);left:50%;transform:translateX(-50%);
+  font-size:10px;color:var(--tx3);opacity:0;transition:.3s;white-space:nowrap}
+.swatches i:hover::after{opacity:1}
+
+/* ============ 叙事卡 ============ */
+.story4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px}
+.story{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;transition:.35s;cursor:default}
+.story:hover{border-color:var(--acc);transform:translateY(-6px)}
+.story h5{font-size:16px}
+.story .who{font-size:12px;color:var(--acc);margin:5px 0 8px;transition:color .5s}
+.story p{font-size:12.5px;color:var(--tx2)}
+@media(max-width:860px){.story4{grid-template-columns:1fr 1fr}}
+
+/* ============ 图片网格 ============ */
+.ig{display:grid;gap:16px;margin-top:46px}
+.ig figure{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);cursor:zoom-in;position:relative;transition:.35s;background:var(--card)}
+.ig figure:hover{border-color:var(--acc);transform:translateY(-6px)}
+.ig img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.ig figure:hover img{transform:scale(1.05)}
+.ig figcaption{position:absolute;left:0;right:0;bottom:0;padding:30px 16px 12px;font-size:12px;color:#fff;
+  background:linear-gradient(transparent,rgba(0,0,0,.85));opacity:0;transition:.35s}
+.ig figure:hover figcaption{opacity:1}
+.ig3{grid-template-columns:repeat(3,1fr)}
+.ig3 figure{aspect-ratio:4/3}
+.ig3.nocrop{align-items:start}
+.ig3.nocrop figure{aspect-ratio:auto}
+.ig3.nocrop img{height:auto;object-fit:contain}
+.ig4{grid-template-columns:repeat(4,1fr)}
+.ig4 figure{aspect-ratio:3/2}
+@media(max-width:860px){.ig3,.ig4{grid-template-columns:1fr 1fr}}
+
+/* ============ 结尾 ============ */
+#end{min-height:70vh;display:flex;align-items:center;text-align:center;position:relative;overflow:hidden;
+  background:radial-gradient(1000px 500px at 50% 30%,rgba(255,77,126,.1),transparent 60%),var(--bg)}
+#end .big{font-size:clamp(56px,10vw,130px)}
+#end .big b{color:var(--acc)}
+#end .contact{display:flex;gap:16px;justify-content:center;margin-top:44px;flex-wrap:wrap}
+#end .contact a{padding:13px 28px;border:1px solid var(--line);border-radius:99px;font-size:14px;transition:.35s}
+#end .contact a:hover{border-color:var(--acc);color:var(--acc)}
+#end .fin{margin-top:60px;color:var(--tx3);font-size:12px;letter-spacing:.2em}
+
+/* ============ 灯箱 ============ */
+#lb{position:fixed;inset:0;z-index:200;background:rgba(5,5,8,.94);display:none;align-items:center;justify-content:center;backdrop-filter:blur(10px)}
+#lb.on{display:flex;animation:fade .3s}
+#lb img,#lb video{max-width:88vw;max-height:82vh;border-radius:12px;box-shadow:0 30px 100px rgba(0,0,0,.8);animation:zoom .35s cubic-bezier(.2,.7,.2,1)}
+#lb video{display:none;background:#000}
+/* 视频不可用：灯箱放 3 秒动图（限制尺寸，避免小图被过度放大） */
+#lb.gif #lbImg{max-width:min(52vw,460px);max-height:62vh;border:1px solid var(--line)}
+#lb.vid #lbImg{display:none}
+#lb.vid #lbVid{display:block}
+@keyframes zoom{from{transform:scale(.92);opacity:0}to{transform:none;opacity:1}}
+#lb .x,#lb .pv,#lb .nx{position:fixed;z-index:2;background:rgba(255,255,255,.07);border:1px solid var(--line);color:#fff;
+  width:48px;height:48px;border-radius:50%;cursor:pointer;font-size:18px;transition:.3s;display:flex;align-items:center;justify-content:center}
+#lb .x:hover,#lb .pv:hover,#lb .nx:hover{background:var(--acc);border-color:var(--acc);color:#0a0a0e}
+#lb .x{top:26px;right:26px}
+#lb .pv{left:26px;top:50%;transform:translateY(-50%)}
+#lb .nx{right:26px;top:50%;transform:translateY(-50%)}
+#lb .ct{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.6);font-size:12px;letter-spacing:.2em}
+
+/* 数据图条 */ 
+.chip2{display:inline-block;font-size:11px;letter-spacing:.2em;color:var(--tx3);border:1px solid var(--line);
+  padding:4px 12px;border-radius:99px;margin-bottom:14px}
+.note{margin-top:20px;font-size:13px;color:var(--tx2);background:rgba(255,255,255,.03);border:1px solid var(--line);
+  border-radius:12px;padding:16px 20px}
+.note b{color:var(--acc);transition:color .5s}
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<nav id="nav">
+  <div class="nin">
+    <div class="logo">ANNE<i>.</i>周珂</div>
+    <div class="links">
+      <a href="#about" data-t="about">关于我</a>
+      <a href="#p1" data-t="p1">AI 模板运营</a>
+      <a href="#p2" data-t="p2">AI 短剧创作</a>
+      <a href="#p3" data-t="p3">敦煌 AI 文旅</a>
+      <a href="#p4" data-t="p4">品牌视觉设计</a>
+    </div>
+  </div>
+  <div id="bar"></div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header id="hero">
+  <div class="wrap hw">
+    <div class="script rv">Anne Personal Design</div>
+    <h1 class="big t1 rv" style="--d:.08s"><b>P</b>ORTFOLIO<span class="dot">.</span></h1>
+    <div class="sub rv" style="--d:.2s">
+      <span><b>周珂 Anne</b></span><span>AIGC 内容运营 / AI 产品设计</span>
+      <span>现居杭州</span><span>3 年 AIGC 实战经验</span>
+    </div>
+    <a class="cta rv" style="--d:.32s" href="#about">探索作品 <span>↓</span></a>
+  </div>
+  <div class="cards" id="tilt">
+    <div class="cd cd1"><img src="img/s07_00.jpg" alt="AI模板运营"></div>
+    <div class="cd cd2"><img src="img/s11_00.jpg" alt="AI短剧"></div>
+    <div class="cd cd3"><img src="img/s18_01f.jpg" alt="敦煌" style="object-position:18% center"></div>
+  </div>
+  <div class="cue en">SCROLL</div>
+</header>
+
+<!-- ================= ABOUT ================= -->
+<section class="sec" id="about">
+  <div class="wrap">
+    <div class="rv"><span class="chip en">ABOUT ME</span></div>
+    <h2 class="h2 rv" style="--d:.1s">教<span class="acc">育</span> · 经历 · 技能</h2>
+    <p class="sub2 rv" style="--d:.16s">设计专业出身，深耕 AIGC 内容运营与 AI 产品设计——既懂内容方法论，也能亲手把工具链跑通。</p>
+    <div class="grid">
+      <div class="pcard rvl">
+        <div class="ava"><img src="img/s02_46.jpg" alt="周珂"></div>
+        <h3>周珂</h3><div class="en2">ANNE · HANGZHOU</div>
+        <div class="row"><span>求职意向</span><b>AIGC 内容运营 / AI 产品设计</b></div>
+        <div class="row"><span>电话</span><b>157-5797-8292</b></div>
+        <div class="row"><span>邮箱</span><b>2196576657@qq.com</b></div>
+        <div class="block-t" style="text-align:left">EDUCATION</div>
+        <div class="row" style="border:none;padding-top:0"><span>2021—2025</span><b>杭州电子科技大学 · 产品设计本科</b></div>
+        <div class="block-t" style="text-align:left">SKILLS</div>
+        <div class="tags">
+          <i>ComfyUI</i><i>LoRA</i><i>Stable Diffusion</i><i>Midjourney</i><i>Seedance</i>
+          <i>Photoshop</i><i>Illustrator</i><i>Figma</i><i>Procreate</i>
+          <i>SQL</i><i>Python</i><i>A/B Test</i>
+        </div>
+      </div>
+      <div>
+        <div class="block-t rv" style="margin-top:0">EXPERIENCE · 工作经历</div>
+        <div class="tl">
+          <div class="ti rv" style="--d:.05s">
+            <h4>同花顺 · AIGC 内容运营 <em>2024.01 — 至今 · 全职</em></h4>
+            <p>搭建爆款挖掘方法论，利用 AI 自动化运营，产能提升 4 倍；主导 4 大品类全周期运营，累计上架模板 5,180+。</p>
+          </div>
+          <div class="ti rv" style="--d:.15s">
+            <h4>杭州文化广播电视集团 · 新媒体运营 <em>2023.06 — 2023.09 · 实习</em></h4>
+            <p>短视频全链路内容生产：选题策划、脚本撰写、拍摄与后期剪辑。</p>
+          </div>
+        </div>
+        <div class="block-t rv">HONORS · 荣誉与科研</div>
+        <div class="honors">
+          <div class="rv" style="--d:.05s">🏆 省政府奖学金 · 校一等奖学金</div>
+          <div class="rv" style="--d:.1s">🌟 百名优秀大学生「媒体之星」</div>
+          <div class="rv" style="--d:.15s">🥇 第十八届「挑战杯」省金奖</div>
+          <div class="rv" style="--d:.2s">🥈 浙江省多媒体大赛省二等奖</div>
+          <div class="rv" style="--d:.25s">📜 EI 会议论文 + 外观专利（第一作者）</div>
+          <div class="rv" style="--d:.3s">🚀 国家级大创立项 2 项（负责人）</div>
+        </div>
+        <div class="stats">
+          <div class="stat rv"><div class="n" data-n="3"><s></s> 年</div><div class="l">AIGC 实战经验</div></div>
+          <div class="stat rv" style="--d:.08s"><div class="n" data-n="5180">+</div><div class="l">累计上架模板</div></div>
+          <div class="stat rv" style="--d:.16s"><div class="n" data-n="4">× 产能</div><div class="l">自动化运营提升</div></div>
+          <div class="stat rv" style="--d:.24s"><div class="n" data-n="9"> 项</div><div class="l">省级以上荣誉</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= P1 AI模板运营 ================= -->
+<section class="phero" id="p1" data-acc="#ff7a2f" data-accd="rgba(255,122,47,.14)" style="--acc:#ff7a2f;--acc-soft:rgba(255,122,47,.14)" style="min-height:70vh;height:70vh">
+  <div class="pimg" style="background-image:url(img/hero_ai.jpg)"></div>
+  <div class="shade"></div>
+  <div class="pt"><div class="wrap">
+    <div>
+      <div class="pen en rv">CHAPTER 01 · AI TEMPLATE OPERATION</div>
+      <h2 class="big rv" style="--d:.1s">AI 模板运营</h2>
+    </div>
+    <div class="pnums">
+      <div class="rv" style="--d:.2s"><b data-n="5180">+</b><span>累计模板供给</span></div>
+      <div class="rv" style="--d:.28s"><b data-n="4">× </b><span>产能提升</span></div>
+      <div class="rv" style="--d:.36s"><b>4</b><span>大品类板块</span></div>
+    </div>
+  </div></div>
+</section>
+
+<section class="sec" data-acc="#ff7a2f" data-accd="rgba(255,122,47,.14)" style="--acc:#ff7a2f;--acc-soft:rgba(255,122,47,.14)">
+  <div class="wrap">
+    <div class="rv"><span class="chip2 en">DREAMFACE · 同花顺</span></div>
+    <h2 class="h2 rv" style="--d:.06s">把「模板」做成<span class="acc">平台核心资产</span></h2>
+    <p class="sub2 rv" style="--d:.12s">Dreamface 是同花顺面向 C 端用户的 AIGC 内容平台，2024 年起聚焦「模板化创作」产品线——模板的质量、数量与风格覆盖度，直接决定用户停留和分享。</p>
+    <div class="g2">
+      <figure class="banner rv" style="margin-top:0"><img src="img/s04_00.jpg" data-lb data-cap="Dreamface 模板化创作产品线" alt="Dreamface 平台"></figure>
+      <div>
+        <div class="block-t rv" style="margin-top:0">METHOD · 爆款挖掘 5 大关键路径</div>
+        <div class="spec">
+          <div class="row rv" style="--d:.05s"><span>01 社媒热点</span><b>追踪趋势与热门话题，锁定潜在爆款方向</b></div>
+          <div class="row rv" style="--d:.1s"><span>02 数据分析</span><b>以制作 / 分享下载 / 留存数据验证爆款潜力</b></div>
+          <div class="row rv" style="--d:.15s"><span>03 竞品拆解</span><b>拆解竞品结构与卖点，借鉴验证有效模板</b></div>
+          <div class="row rv" style="--d:.2s"><span>04 投放分析</span><b>挖掘高转化创意素材与投放打法</b></div>
+          <div class="row rv" style="--d:.25s"><span>05 搜索预判</span><b>监控热词飙升与产品榜，提前布局内容</b></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat rv"><div class="n" data-n="5180">+</div><div class="l">累计上架模板</div></div>
+      <div class="stat rv" style="--d:.08s"><div class="n" data-n="278"></div><div class="l">AI Filter 月均上架</div></div>
+      <div class="stat rv" style="--d:.16s"><div class="n" data-n="54" data-pre="+">%</div><div class="l">曝光制作率提升</div></div>
+      <div class="stat rv" style="--d:.24s"><div class="n" data-n="300">+</div><div class="l">单日 2,000+ 爆款记录</div></div>
+    </div>
+
+    <div style="margin-top:80px">
+      <div class="rv"><span class="chip2 en">GROWTH · 2026 H1</span></div>
+      <h2 class="h2 rv" style="--d:.06s;font-size:clamp(26px,3.4vw,38px)">核心数据<span class="acc">全面增长</span></h2>
+      <div class="bars">
+        <div class="br rv" data-from="48.7" data-to="60" data-max="100"><div class="bl"><span>AI Filter 制作分享率</span><b>48.7% → 60%</b></div><div class="track"><div class="ghost" style="width:48.7%"></div><div class="fill"></div></div></div>
+        <div class="br rv" data-from="16.6" data-to="49.9" data-max="100"><div class="bl"><span>次日留存</span><b>16.6% → 49.9%</b></div><div class="track"><div class="ghost" style="width:16.6%"></div><div class="fill"></div></div></div>
+        <div class="br rv" data-from="5.8" data-to="14.2" data-max="100"><div class="bl"><span>日活占比</span><b>5.8% → 14.2%</b></div><div class="track"><div class="ghost" style="width:5.8%"></div><div class="fill"></div></div></div>
+        <div class="br rv" data-from="51" data-to="60.5" data-max="100"><div class="bl"><span>活照片 分享下载率</span><b>51% → 60.5%</b></div><div class="track"><div class="ghost" style="width:51%"></div><div class="fill"></div></div></div>
+        <div class="br rv" data-from="54.2" data-to="78.1" data-max="100"><div class="bl"><span>Magic Effects 分享下载率</span><b>54.2% → 78.1%</b></div><div class="track"><div class="ghost" style="width:54.2%"></div><div class="fill"></div></div></div>
+      </div>
+      <div class="note rv">🔥 孵化爆款模板 <b>10+</b> 个（吉卜力风格单日 <b>2.3w</b> 次制作）；日均制作 <b>2.6w → 5w+</b>（+48%）</div>
+    </div>
+
+    <div style="margin-top:90px">
+      <div class="rv"><span class="chip2 en">CASE · 2026 节点战役</span></div>
+      <h2 class="h2 rv" style="--d:.06s;font-size:clamp(26px,3.4vw,38px)">穿透案例 · <span class="acc">四场节点战役</span></h2>
+      <div class="g2">
+        <figure class="banner rv vs-wrap" style="margin-top:0;position:relative">
+          <div class="hslide" data-hs>
+            <div class="hs-track">
+              <div class="hs-slide">
+                <div class="vscroll" data-vs>
+                  <img src="img/father_long.jpg" data-lb data-cap="父亲节 · 活动模板长图" alt="父亲节活动模板长图">
+                </div>
+                <div class="vs-prog" data-vsp></div>
+                <div class="vs-hint"><i>↕</i>上下滑看完整长图</div>
+              </div>
+              <div class="hs-slide">
+                <div class="vscroll" data-vs>
+                  <img src="img/act_80s.jpg" data-lb data-cap="你的 80 年代 · 活动模板长图" alt="80 年代复古活动模板长图">
+                </div>
+                <div class="vs-prog" data-vsp></div>
+                <div class="vs-hint"><i>↕</i>上下滑看完整长图</div>
+              </div>
+              <div class="hs-slide">
+                <div class="vscroll" data-vs>
+                  <img src="img/act_nba.jpg" data-lb data-cap="篮球总决赛 · 活动模板长图" alt="篮球总决赛活动模板长图">
+                </div>
+                <div class="vs-prog" data-vsp></div>
+                <div class="vs-hint"><i>↕</i>上下滑看完整长图</div>
+              </div>
+              <div class="hs-slide">
+                <div class="vscroll" data-vs>
+                  <img src="img/act_football.jpg" data-lb data-cap="世界杯 · 活动模板长图" alt="世界杯活动模板长图">
+                </div>
+                <div class="vs-prog" data-vsp></div>
+                <div class="vs-hint"><i>↕</i>上下滑看完整长图</div>
+              </div>
+            </div>
+            <button class="hs-arrow prev" type="button" aria-label="上一个活动">‹</button>
+            <button class="hs-arrow next" type="button" aria-label="下一个活动">›</button>
+          </div>
+          <div class="hs-bar">
+            <span class="hs-idx en" data-hsidx>01 / 04</span>
+            <div class="hs-tabs" data-hstabs>
+              <button type="button" class="on">父亲节</button>
+              <button type="button">你的 80 年代</button>
+              <button type="button">篮球总决赛</button>
+              <button type="button">世界杯</button>
+            </div>
+          </div>
+        </figure>
+        <div>
+          <div class="spec" data-hspanels>
+            <div class="hs-panel on">
+              <div class="row"><span>背景</span><b>节点流量窗口短，竞品尚未系统性布局节日模板</b></div>
+              <div class="row"><span>动作</span><b>提前 2 周预制节日模板与 Banner；预热期铺垫、爆发期集中推爆款、长尾期续量</b></div>
+              <div class="row"><span>结果</span><b>曝光 42w · 使用 5.8w · 分享率 62%</b></div>
+            </div>
+            <div class="hs-panel">
+              <div class="row"><span>背景</span><b>复古怀旧话题在社媒自发扩散，平台缺少成体系的年代感模板</b></div>
+              <div class="row"><span>动作</span><b>提炼 80 年代视觉符号（胶片颗粒 / 霓虹配色 / 港风字卡），批量产出模板并在话题高峰集中投放</b></div>
+              <div class="row"><span>结果</span><b>补齐复古怀旧题材供给，与节日线共同构成全年题材矩阵</b></div>
+            </div>
+            <div class="hs-panel">
+              <div class="row"><span>背景</span><b>总决赛期间体育话题集中爆发，用户需要快速产出观赛态度内容</b></div>
+              <div class="row"><span>动作</span><b>按球队配色 / 球星剪影 / 比分字卡做模板储备，赛程关键节点同步上线</b></div>
+              <div class="row"><span>结果</span><b>覆盖总决赛全赛程的内容需求，赛事期无需临时追加设计</b></div>
+            </div>
+            <div class="hs-panel">
+              <div class="row"><span>背景</span><b>顶级赛事流量峰值高，内容消费以「主队应援」为核心</b></div>
+              <div class="row"><span>动作</span><b>按国家队维度预制应援模板，开赛前完成多语言版本储备</b></div>
+              <div class="row"><span>结果</span><b>支撑赛事期间应援类内容供给，覆盖多支热门球队</b></div>
+            </div>
+          </div>
+          <div class="flow" style="grid-template-columns:repeat(5,1fr);margin-top:34px">
+            <div class="fw rv" style="--d:.05s"><div class="dot">01</div><h5>节点锁定</h5><p>全年营销日历前置规划</p></div>
+            <div class="fw rv" style="--d:.1s"><div class="dot">02</div><h5>需求预判</h5><p>同期数据 × 社媒热度</p></div>
+            <div class="fw rv" style="--d:.15s"><div class="dot">03</div><h5>内容预制</h5><p>节点前 2 周完成储备</p></div>
+            <div class="fw rv" style="--d:.2s"><div class="dot">04</div><h5>上线节奏</h5><p>预热 / 爆发 / 长尾分层</p></div>
+            <div class="fw rv" style="--d:.25s"><div class="dot">05</div><h5>复盘校准</h5><p>数据反哺下一节点</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:90px">
+      <div class="rv"><span class="chip2 en">AUTOMATION · 降本增效</span></div>
+      <h2 class="h2 rv" style="--d:.06s;font-size:clamp(26px,3.4vw,38px)">自动化生产 × <span class="acc">推理加速</span> × 自研替换</h2>
+      <div class="flow">
+        <div class="fw rv" style="--d:.05s"><div class="dot">01</div><h5>爆款要素拆解</h5><p>拆解爆款结构，沉淀可复用范式</p></div>
+        <div class="fw rv" style="--d:.12s"><div class="dot">02</div><h5>素材自动抓取</h5><p>自动抓取图片 / 视频 / 音频信息</p></div>
+        <div class="fw rv" style="--d:.19s"><div class="dot">03</div><h5>脚本合成</h5><p>生成制作脚本，调用 API 批量合成</p></div>
+        <div class="fw rv" style="--d:.26s"><div class="dot">04</div><h5>自动化上架</h5><p>直连模板后台，一键批量上架</p></div>
+      </div>
+      <div class="note rv">⚙️ 自动化工具已复用至 <b>全部 4 大品类</b>（AI Filter / 活照片 / Magic Effects / DreamAct），AI Filter 线产能跃升 <b>4×</b>、月均上架 <b>300 个/周</b>；释放重复劳动，人力聚焦爆款选题 × 数据复盘。</div>
+    </div>
+
+    <div style="margin-top:90px">
+      <div class="rv"><span class="chip2 en">GALLERY · 模板墙</span></div>
+      <h2 class="h2 rv" style="--d:.06s;font-size:clamp(26px,3.4vw,38px)">模板作品<span class="acc">一览</span></h2>
+    </div>
+    <div class="acc-gal hv" style="margin-top:0">
+      <div class="ag rv" style="--d:.05s;--bg:url(media/aifilter/p01.jpg)">
+        <div class="ag-panels">
+          <figure class="tp" data-lb data-src="media/aifilter/01.jpg" data-cover="media/aifilter/p01.jpg" data-cap="AI Filter · 智能滤镜 01">
+            <img src="media/aifilter/p01.jpg" alt="AI Filter · 智能滤镜 01" loading="lazy">
+            <span class="tp-n">01</span><span class="tp-cap">点击查看</span>
+          </figure>
+          <figure class="tp" data-lb data-src="media/aifilter/02.jpg" data-cover="media/aifilter/p02.jpg" data-cap="AI Filter · 智能滤镜 02">
+            <img src="media/aifilter/p02.jpg" alt="AI Filter · 智能滤镜 02" loading="lazy">
+            <span class="tp-n">02</span><span class="tp-cap">点击查看</span>
+          </figure>
+          <figure class="tp" data-lb data-src="media/aifilter/03.jpg" data-cover="media/aifilter/p03.jpg" data-cap="AI Filter · 智能滤镜 03">
+            <img src="media/aifilter/p03.jpg" alt="AI Filter · 智能滤镜 03" loading="lazy">
+            <span class="tp-n">03</span><span class="tp-cap">点击查看</span>
+          </figure>
+          <figure class="tp" data-lb data-src="media/aifilter/04.jpg" data-cover="media/aifilter/p04.jpg" data-cap="AI Filter · 智能滤镜 04">
+            <img src="media/aifilter/p04.jpg" alt="AI Filter · 智能滤镜 04" loading="lazy">
+            <span class="tp-n">04</span><span class="tp-cap">点击查看</span>
+          </figure>
+          <figure class="tp" data-lb data-src="media/aifilter/05.jpg" data-cover="media/aifilter/p05.jpg" data-cap="AI Filter · 智能滤镜 05">
+            <img src="media/aifilter/p05.jpg" alt="AI Filter · 智能滤镜 05" loading="lazy">
+            <span class="tp-n">05</span><span class="tp-cap">点击查看</span>
+          </figure>
+          <figure class="tp" data-lb data-src="media/aifilter/06.jpg" data-cover="media/aifilter/p06.jpg" data-cap="AI Filter · 智能滤镜 06">
+            <img src="media/aifilter/p06.jpg" alt="AI Filter · 智能滤镜 06" loading="lazy">
+            <span class="tp-n">06</span><span class="tp-cap">点击查看</span>
+          </figure>
+        </div>
+        <div class="ag-tag"><span class="en ag-no">01</span><span class="ag-cap"><span class="ag-vn">AI FILTER</span><span class="ag-arr">→</span></span></div>
+        <div class="ag-info"><h4>AI Filter <em>智能滤镜</em></h4><p>制作分享率 <b>48.7% → 60%</b>；次日留存 <b>16.6% → 49.9%</b>；日活占比 <b>5.8% → 14.2%</b>　<span style="opacity:.72">共 6 个样例</span></p></div>
+      </div>
+      <div class="ag rv" style="--d:.12s;--bg:url(media/magic/p01.jpg)">
+        <div class="ag-panels">
+          <figure class="tp vid" data-lb data-vid="media/magic/01.mp4" data-gif="media/magic/01.gif" data-webm="media/magic/01.webm" data-cover="media/magic/p01.jpg" data-cap="Magic Effects · 魔法特效 01">
+            <img src="media/magic/p01.jpg" alt="Magic Effects · 魔法特效 01" loading="lazy">
+            <video muted loop playsinline preload="none"></video>
+            <span class="tp-n">01</span><span class="tp-play">▶</span><span class="tp-cap">自动播放 · 点击放大</span>
+          </figure>
+          <figure class="tp vid" data-lb data-vid="media/magic/02.mp4" data-gif="media/magic/02.gif" data-webm="media/magic/02.webm" data-cover="media/magic/p02.jpg" data-cap="Magic Effects · 魔法特效 02">
+            <img src="media/magic/p02.jpg" alt="Magic Effects · 魔法特效 02" loading="lazy">
+            <video muted loop playsinline preload="none"></video>
+            <span class="tp-n">02</span><span class="tp-play">▶</span><span class="tp-cap">自动播放 · 点击放大</span>
+          </figure>
+          <figure class="tp vid" data-lb data-vid="media/magic/03.mp4" data-gif="media/magic/03.gif" data-webm="media/magic/03.webm" data-cover="media/magic/p03.jpg" data-cap="Magic Effects · 魔法特效 03">
+            <img src="media/magic/p03.jpg" alt="Magic Effects · 魔法特效 03" loading="lazy">
+            <video muted loop playsinline preload="none"></video>
+            <span class="tp-n">03</span><span class="tp-play">▶</span><span class="tp-cap">自动播放 · 点击放大</span>
+          </figure>
+          <figure class="tp vid" data-lb data-vid="media/magic/04.mp4" data-gif="media/magic/04.gif" data-webm="media/magic/04.webm" data-cover="media/magic/p04.jpg" data-cap="Magic Effects · 魔法特效 04">
+            <img src="media/magic/p04.jpg" alt="Magic Effects · 魔法特效 04" loading="lazy">
+            <video muted loop playsinline preload="none"></video>
+            <span class="tp-n">04</span><span class="tp-play">▶</span><span class="tp-cap">自动播放 · 点击放大</span>
+          </figure>
+          <figure class="tp vid" data-lb data-vid="media/magic/05.mp4" data-gif="media/magic/05.gif" data-webm="media/magic/05.webm" data-cover="media/magic/p05.jpg" data-cap="Magic Effects · 魔法特效 05">
+            <img src="media/magic/p05.jpg" alt="Magic Effects · 魔法特效 05" loading="lazy">
+            <video muted loop playsinline preload="none"></video>
+            <span class="tp-n">05</span><span class="tp-play">▶</span><span class="tp-cap">自动播放 · 点击放大</span>
+          </figure>
+          <figure class="tp vid" data-lb data-vid="media/magic/06.mp4" data-gif="media/magic/06.gif" data-webm="media/magic/06.webm" data-cover="media/magic/p06.jpg" data-cap="Magic Effects · 魔法特效 06">
+            <img src="media/magic/p06.jpg" alt="Magic Effects · 魔法特效 06" loading="lazy">
+            <video muted loop playsinline preload="none"></video>
+            <span class="tp-n">06</span><span class="tp-play">▶</span><span class="tp-cap">自动播放 · 点击放大</span>
+          </figure>
+        </div>
+        <div class="ag-tag"><span class="en ag-no">02</span><span class="ag-cap"><span class="ag-vn">MAGIC</span><span class="ag-arr">→</span></span></div>
+        <div class="ag-info"><h4>Magic Effects <em>魔法特效</em></h4><p>奇幻瞬间、奇想玩法持续上新；分享下载率 <b>54.2% → 78.1%</b>，站内玩法心智第一入口　<span style="opacity:.72">共 6 个样例</span></p></div>
+      </div>
+      <div class="ag rv" style="--d:.19s;--bg:url(media/livephoto/p01.jpg)">
+        <div class="ag-panels">
+          <figure class="tp vid" data-lb data-vid="media/livephoto/01.mp4" data-gif="media/livephoto/01.gif" data-webm="media/livephoto/01.webm" data-cover="media/livephoto/p01.jpg" data-cap="活照片 · Live Photo 01">
+            <img src="media/livephoto/p01.jpg" alt="活照片 · Live Photo 01" loading="lazy">
+            <video muted loop playsinline preload="none"></video>
+            <span class="tp-n">01</span><span class="tp-play">▶</span><span class="tp-cap">自动播放 · 点击放大</span>
+          </figure>
+          <figure class="tp vid" data-lb data-vid="media/livephoto/02.mp4" data-gif="media/livephoto/02.gif" data-webm="media/livephoto/02.webm" data-cover="media/livephoto/p02.jpg" data-cap="活照片 · Live Photo 02">
+            <img src="media/livephoto/p02.jpg" alt="活照片 · Live Photo 02" loading="lazy">
+            <video muted loop playsinline preload="none"></video>
+            <span class="tp-n">02</span><span class="tp-play">▶</span><span class="tp-cap">自动播放 · 点击放大</span>
+          </figure>
+          <figure class="tp vid" data-lb data-vid="media/livephoto/03.mp4" data-gif="media/livephoto/03.gif" data-webm="media/livephoto/03.webm" data-cover="media/livephoto/p03.jpg" data-cap="活照片 · Live Photo 03">
+            <img src="media/livephoto/p03.jpg" alt="活照片 · Live Photo 03" loading="lazy">
+            <video muted loop playsinline preload="none"></video>
+            <span class="tp-n">03</span><span class="tp-play">▶</span><span class="tp-cap">自动播放 · 点击放大</span>
+          </figure>
+          <figure class="tp vid" data-lb data-vid="media/livephoto/04.mp4" data-gif="media/livephoto/04.gif" data-webm="media/livephoto/04.webm" data-cover="media/livephoto/p04.jpg" data-cap="活照片 · Live Photo 04">
+            <img src="media/livephoto/p04.jpg" alt="活照片 · Live Photo 04" loading="lazy">
+            <video muted loop playsinline preload="none"></video>
+            <span class="tp-n">04</span><span class="tp-play">▶</span><span class="tp-cap">自动播放 · 点击放大</span>
+          </figure>
+          <figure class="tp vid" data-lb data-vid="media/livephoto/05.mp4" data-gif="media/livephoto/05.gif" data-webm="media/livephoto/05.webm" data-cover="media/livephoto/p05.jpg" data-cap="活照片 · Live Photo 05">
+            <img src="media/livephoto/p05.jpg" alt="活照片 · Live Photo 05" loading="lazy">
+            <video muted loop playsinline preload="none"></video>
+            <span class="tp-n">05</span><span class="tp-play">▶</span><span class="tp-cap">自动播放 · 点击放大</span>
+          </figure>
+          <figure class="tp vid" data-lb data-vid="media/livephoto/06.mp4" data-gif="media/livephoto/06.gif" data-webm="media/livephoto/06.webm" data-cover="media/livephoto/p06.jpg" data-cap="活照片 · Live Photo 06">
+            <img src="media/livephoto/p06.jpg" alt="活照片 · Live Photo 06" loading="lazy">
+            <video muted loop playsinline preload="none"></video>
+            <span class="tp-n">06</span><span class="tp-play">▶</span><span class="tp-cap">自动播放 · 点击放大</span>
+          </figure>
+        </div>
+        <div class="ag-tag"><span class="en ag-no">03</span><span class="ag-cap"><span class="ag-vn">活照片</span><span class="ag-arr">→</span></span></div>
+        <div class="ag-info"><h4>活照片 <em>LIVE PHOTO</em></h4><p>定格生动、跃然眼前，节点战役主力玩法；分享下载率 <b>51% → 60.5%</b>，曝光制作率较年初 <b>+54%</b>　<span style="opacity:.72">共 6 个样例</span></p></div>
+      </div>
+      <div class="ag rv" style="--d:.26s;--bg:url(media/dreamact/p01.jpg)">
+        <div class="ag-panels">
+          <figure class="tp vid" data-lb data-vid="media/dreamact/01.mp4" data-gif="media/dreamact/01.gif" data-webm="media/dreamact/01.webm" data-cover="media/dreamact/p01.jpg" data-cap="DreamAct · 梦想演绎 01">
+            <img src="media/dreamact/p01.jpg" alt="DreamAct · 梦想演绎 01" loading="lazy">
+            <video muted loop playsinline preload="none"></video>
+            <span class="tp-n">01</span><span class="tp-play">▶</span><span class="tp-cap">自动播放 · 点击放大</span>
+          </figure>
+          <figure class="tp vid" data-lb data-vid="media/dreamact/02.mp4" data-gif="media/dreamact/02.gif" data-webm="media/dreamact/02.webm" data-cover="media/dreamact/p02.jpg" data-cap="DreamAct · 梦想演绎 02">
+            <img src="media/dreamact/p02.jpg" alt="DreamAct · 梦想演绎 02" loading="lazy">
+            <video muted loop playsinline preload="none"></video>
+            <span class="tp-n">02</span><span class="tp-play">▶</span><span class="tp-cap">自动播放 · 点击放大</span>
+          </figure>
+          <figure class="tp vid" data-lb data-vid="media/dreamact/03.mp4" data-gif="media/dreamact/03.gif" data-webm="media/dreamact/03.webm" data-cover="media/dreamact/p03.jpg" data-cap="DreamAct · 梦想演绎 03">
+            <img src="media/dreamact/p03.jpg" alt="DreamAct · 梦想演绎 03" loading="lazy">
+            <video muted loop playsinline preload="none"></video>
+            <span class="tp-n">03</span><span class="tp-play">▶</span><span class="tp-cap">自动播放 · 点击放大</span>
+          </figure>
+          <figure class="tp vid" data-lb data-vid="media/dreamact/04.mp4" data-gif="media/dreamact/04.gif" data-webm="media/dreamact/04.webm" data-cover="media/dreamact/p04.jpg" data-cap="DreamAct · 梦想演绎 04">
+            <img src="media/dreamact/p04.jpg" alt="DreamAct · 梦想演绎 04" loading="lazy">
+            <video muted loop playsinline preload="none"></video>
+            <span class="tp-n">04</span><span class="tp-play">▶</span><span class="tp-cap">自动播放 · 点击放大</span>
+          </figure>
+          <figure class="tp vid" data-lb data-vid="media/dreamact/05.mp4" data-gif="media/dreamact/05.gif" data-webm="media/dreamact/05.webm" data-cover="media/dreamact/p05.jpg" data-cap="DreamAct · 梦想演绎 05">
+            <img src="media/dreamact/p05.jpg" alt="DreamAct · 梦想演绎 05" loading="lazy">
+            <video muted loop playsinline preload="none"></video>
+            <span class="tp-n">05</span><span class="tp-play">▶</span><span class="tp-cap">自动播放 · 点击放大</span>
+          </figure>
+          <figure class="tp vid" data-lb data-vid="media/dreamact/06.mp4" data-gif="media/dreamact/06.gif" data-webm="media/dreamact/06.webm" data-cover="media/dreamact/p06.jpg" data-cap="DreamAct · 梦想演绎 06">
+            <img src="media/dreamact/p06.jpg" alt="DreamAct · 梦想演绎 06" loading="lazy">
+            <video muted loop playsinline preload="none"></video>
+            <span class="tp-n">06</span><span class="tp-play">▶</span><span class="tp-cap">自动播放 · 点击放大</span>
+          </figure>
+        </div>
+        <div class="ag-tag"><span class="en ag-no">04</span><span class="ag-cap"><span class="ag-vn">DREAMACT</span><span class="ag-arr">→</span></span></div>
+        <div class="ag-info"><h4>DreamAct <em>梦想演绎</em></h4><p>梦想演绎、想象成真，高频剧情化模板供给；完成新板块 <b>0-1 冷启动</b>　<span style="opacity:.72">共 6 个样例</span></p></div>
+      </div>
+    </div>
+    <div class="edge en" style="margin-top:18px"><span>HOVER · 悬停展开板块，每个板块 6 个模板</span><span>视频悬停预览 · CLICK 全屏查看</span></div>
+  </div>
+</section>
+
+<!-- ================= P2 AI短剧 ================= -->
+<section class="phero" id="p2" data-acc="#7fb3c8" data-accd="rgba(127,179,200,.14)" style="--acc:#7fb3c8;--acc-soft:rgba(127,179,200,.14)">
+  <div class="pimg" style="background-image:url(img/s11_00.jpg)"></div>
+  <div class="shade"></div>
+  <div class="pt"><div class="wrap">
+    <div>
+      <div class="pen en rv">CHAPTER 02 · AI SHORT DRAMA</div>
+      <h2 class="big rv" style="--d:.1s">AI 短剧 · 蜃楼引</h2>
+      <div class="pen rv" style="--d:.18s;letter-spacing:.1em">退潮之夜，第十三声钟响之后</div>
+    </div>
+    <div class="pnums">
+      <div class="rv" style="--d:.2s"><b>3</b><span>制作阶段</span></div>
+      <div class="rv" style="--d:.28s"><b>9</b><span>关键帧镜头</span></div>
+      <div class="rv" style="--d:.36s"><b>100%</b><span>画面 AI 生成</span></div>
+    </div>
+  </div></div>
+</section>
+
+<section class="sec" data-acc="#7fb3c8" data-accd="rgba(127,179,200,.14)" style="--acc:#7fb3c8;--acc-soft:rgba(127,179,200,.14)">
+  <div class="wrap">
+    <div class="g2">
+      <div>
+        <div class="rv"><span class="chip2 en">01 / SYNOPSIS</span></div>
+        <h2 class="h2 rv" style="--d:.06s;font-size:clamp(24px,3vw,34px)">项目<span class="acc">简介</span></h2>
+        <p class="sub2 rv" style="--d:.12s;margin-top:18px">退潮之夜，白发盲眼的琴师抱着断弦古琴走上干涸戏台，指尖拨碎满台月影，把潮神封回青瓷酒盏；盐霜结晶与瓷面开片交替生长，重构东方志怪的视觉边界。</p>
+        <p class="sub2 rv" style="--d:.18s;margin-top:12px;color:var(--tx3);font-size:13px">On the night of the lowest tide, a blind qin player seals the Tide God back into a celadon cup. 全片画面由 AI 生成，辅以人工精剪与音效设计。</p>
+        <div class="quote rv" style="--d:.24s">同一套提示词体系下的九个关键帧——盐霜颗粒与冷调光比保持稳定。</div>
+      </div>
+      <figure class="banner rv" style="margin-top:0"><img src="img/s12_11.jpg" data-lb data-cap="蜃楼引 · 部分镜头" alt="镜头展示"></figure>
+    </div>
+
+    <div class="g2" style="margin-top:90px">
+      <figure class="banner rv" style="margin-top:0"><img src="img/s13_04.jpg" data-lb data-cap="上官听弦 · 角色设定" style="object-fit:cover;aspect-ratio:1/1.05" alt="角色"></figure>
+      <div>
+        <div class="rv"><span class="chip2 en">02 / CHARACTER</span></div>
+        <h2 class="h2 rv" style="--d:.06s;font-size:clamp(24px,3vw,34px)">上官听弦 <span class="acc">· 盐城守钟人</span></h2>
+        <p class="sub2 rv" style="--d:.1s;margin-top:10px;font-size:13px">A blind qin player & bell-keeper of the salt city</p>
+        <div class="spec" style="margin-top:20px">
+          <div class="row rv" style="--d:.05s"><span>性别 / 年龄</span><b>男 · 三十岁上下</b></div>
+          <div class="row rv" style="--d:.1s"><span>背景简介</span><b>独坐于干涸戏台四柱之间的盲眼琴师，替全城听着潮声</b></div>
+          <div class="row rv" style="--d:.15s"><span>武器 / 器物</span><b>断弦古琴 · 青瓷酒盏 · 薄盐霜披帛</b></div>
+          <div class="row rv" style="--d:.2s"><span>核心动机</span><b>以一支弦做刀剑，把潮水退回海里</b></div>
+          <div class="row rv" style="--d:.25s"><span>视觉母题</span><b>盐霜结晶 · 瓷面开片 · 水汽涟漪</b></div>
+          <div class="row rv" style="--d:.3s"><span>性格关键词</span><b>沉静 · 孤守 · 以弦为刃</b></div>
+        </div>
+        <div class="quote rv" style="--d:.35s">先把基准面部 ID 与器物逻辑钉死，再做多镜头生成——角色才不会在镜头之间换脸。</div>
+      </div>
+    </div>
+
+    <div class="rv" style="margin-top:90px"><span class="chip2 en">PRODUCTION · 制作流程</span></div>
+    <h2 class="h2 rv" style="--d:.06s;font-size:clamp(26px,3.4vw,38px)">三阶段 <span class="acc">工业化</span>制作</h2>
+    <div class="ph-h rv" style="margin-top:50px"><b>PHASE 1</b><span>前置筹备</span></div>
+    <div class="pane on" id="pp1">
+        <div class="g2">
+          <div>
+            <h4 style="font-size:20px">1.1 · AI 协同叙事与视觉骨架</h4>
+            <p class="sub2" style="margin-top:14px">直接拿提示词抽卡，镜头逻辑必然碎裂。前期先用大模型做剧本结构化拆解，把叙事锚点、镜头顺序与视觉母题定型，再进入视觉生产。</p>
+            <div class="steps">
+              <div class="rv"><b>A</b>剧本结构化拆解，锚定叙事节拍</div>
+              <div class="rv"><b>B</b>铅笔草图阶段定型节奏与运镜</div>
+              <div class="rv"><b>C</b>角色 / 器物 / 场景资产先行锁定</div>
+            </div>
+          </div>
+          <figure class="banner rv" style="margin-top:0"><img src="img/s14_11.jpg" data-lb data-cap="分镜与视觉骨架"></figure>
+        </div>
+      </div>
+      <div class="ph-h rv"><b>PHASE 2</b><span>风格与提示词</span></div>
+      <div class="pane on" id="pp2">
+        <div class="g2">
+          <div>
+            <h4 style="font-size:20px">2.1 · 色彩脚本与美学基调</h4>
+            <p class="sub2" style="margin-top:14px">先做环境空镜，推演出全片色彩脚本：<b style="color:var(--acc)">冷青灰 + 瓷白 + 暗金</b>——盐霜颗粒与青瓷开片倒影作为跨镜头视觉常量。</p>
+            <h4 style="font-size:20px;margin-top:26px">2.2 · 固定提示词公式</h4>
+            <div class="steps">
+              <div><b>STYLE</b>东方志怪水墨 / 盐霜结晶 / 冷青灰+瓷白 / 35mm 颗粒</div>
+              <div><b>SHOT</b>俯视大远景 → 中近景环绕 → 手部特写</div>
+              <div><b>SUBJECT</b>白发盲眼琴师，青灰长袍，赤足跪坐水台</div>
+              <div><b>SETTING</b>退潮盐碱广场，薄盐霜+水膜，倒影碎成青瓷开片纹</div>
+            </div>
+            <p style="color:var(--tx3);font-size:12.5px;margin-top:14px">FIXED 固定不动：风格描述全程一致 ｜ DYNAMIC 动态变更：景别 / 主体 / 环境逐条替换</p>
+          </div>
+          <figure class="banner rv" style="margin-top:0"><img src="img/s15_07.jpg" data-lb data-cap="色彩脚本 · 环境空镜"></figure>
+        </div>
+      </div>
+      <div class="ph-h rv"><b>PHASE 3</b><span>生成与后期</span></div>
+      <div class="pane on" id="pp3">
+        <div class="g2">
+          <div>
+            <h4 style="font-size:20px">3.1 · 视频模型横向基准测试</h4>
+            <p class="sub2" style="margin-top:14px">同一句提示词、同一组镜位，交给三个视频模型出片，差异集中在手部运动与雨雾密度——单模型硬套整片会推高废片率，按镜头类型分工出片，返工成本最低。</p>
+            <h4 style="font-size:20px;margin-top:26px">3.2 · 视听语言与剪辑</h4>
+            <p class="sub2" style="margin-top:12px">AI 视频长镜头下的时空一致性仍有缺陷，靠配音与剪辑把漏洞藏进节奏里。</p>
+          </div>
+          <div>
+            <figure class="banner rv" style="margin-top:0"><img src="img/s16_06.jpg" data-lb data-cap="动态生成与精修"></figure>
+            <figure class="banner rv" style="--d:.1s;margin-top:14px"><img src="img/s16_09.jpg" data-lb data-cap="视听语言与剪辑 · 剪辑时间线"></figure>
+          </div>
+        </div>
+      </div>
+
+    <figure class="banner rv" style="margin-top:60px"><img src="img/s12_13.jpg" data-lb data-cap="九宫格关键帧 · SELECTED FRAMES" alt="九宫格"></figure>
+  </div>
+</section>
+
+<!-- ================= P3 敦煌 ================= -->
+<section class="phero" id="p3" data-acc="#c99b4a" data-accd="rgba(201,155,74,.14)" style="--acc:#c99b4a;--acc-soft:rgba(201,155,74,.14)">
+  <div class="pimg" style="background-image:url(img/s18_01.jpg)"></div>
+  <div class="shade"></div>
+  <div class="pt"><div class="wrap">
+    <div>
+      <div class="pen en rv">CHAPTER 03 · DUNHUANG AI CULTURAL TOURISM</div>
+      <h2 class="big rv" style="--d:.1s">敦煌 AI 文旅</h2>
+      <div class="pen rv" style="--d:.18s;letter-spacing:.1em">与敦煌博物馆共建「AI 影像打卡机」</div>
+    </div>
+    <div class="pnums">
+      <div class="rv" style="--d:.2s"><b data-n="12000">+ 张</b><span>累计影像生成</span></div>
+      <div class="rv" style="--d:.28s"><b data-n="8"> 秒</b><span>单张出图耗时</span></div>
+      <div class="rv" style="--d:.36s"><b data-n="2"> 处</b><span>景区点位上线</span></div>
+    </div>
+  </div></div>
+</section>
+
+<section class="sec" data-acc="#c99b4a" data-accd="rgba(201,155,74,.14)" style="--acc:#c99b4a;--acc-soft:rgba(201,155,74,.14)">
+  <div class="wrap">
+    <p class="sub2 rv" style="max-width:860px">以定制 LoRA 与 ComfyUI 工作流，让每位游客在一分钟内带走专属敦煌影像。<b style="color:var(--tx)">ROLE：主设计师 · 视觉与工作流</b></p>
+
+    <div class="ig ig4">
+      <figure class="rv" style="--d:.05s"><img src="img/s19_02.jpg" data-lb data-cap="敦煌特色服饰 · 风格迁移 CoAdapter" loading="lazy" alt=""><figcaption>01 敦煌特色服饰 · CoAdapter 风格迁移</figcaption></figure>
+      <figure class="rv" style="--d:.12s"><img src="img/s19_17.jpg" data-lb data-cap="人像风格化 · InstantID / IP-Adapter" loading="lazy" alt=""><figcaption>02 人像风格化 · 保人脸相似度</figcaption></figure>
+      <figure class="rv" style="--d:.19s"><img src="img/s19_32.jpg" data-lb data-cap="写真打卡 · 蒙版文字流程" loading="lazy" alt=""><figcaption>03 写真打卡 · Image blend by mask</figcaption></figure>
+      <figure class="rv" style="--d:.26s"><img src="img/s19_47.jpg" data-lb data-cap="海报生成 · 风格化蒙版" loading="lazy" alt=""><figcaption>04 海报生成 · 蒙版融合 + ControlNet</figcaption></figure>
+    </div>
+
+    <div class="g2" style="margin-top:90px">
+      <div>
+        <div class="rv"><span class="chip2 en">02 / CUSTOM MODEL TRAINING</span></div>
+        <h2 class="h2 rv" style="--d:.06s;font-size:clamp(24px,3vw,34px)">定制模型训练 <span class="acc">Checkpoint & LoRA</span></h2>
+        <div class="spec" style="margin-top:24px">
+          <div class="row rv" style="--d:.05s"><span>数据构建</span><b>按服饰 / 器物 / 纹样 / 场景四类筛选，构建 2,400 张训练集</b></div>
+          <div class="row rv" style="--d:.12s"><span>底模 + LoRA</span><b>SDXL 底模叠加 4 组定制 LoRA，锁定画风与角色一致性</b></div>
+          <div class="row rv" style="--d:.19s"><span>控制与融合</span><b>InstantID / IP-Adapter 保人脸，ControlNet 控构图</b></div>
+          <div class="row rv" style="--d:.26s"><span>生产部署</span><b>封装为 ComfyUI 工作流，单张 8 秒出图</b></div>
+        </div>
+        <div class="note rv" style="--d:.3s">🧪 训练策略：MJ 出底图 → PS 合成造样本 <b>600 组</b>反哺 LoRA，解决敦煌样本稀缺；固定种子跑 3 轮 × 50 组稳定性测试，批量出图风格一致率 <b>96%</b>。</div>
+      </div>
+      <figure class="banner rv" style="margin-top:0"><img src="img/s20_18.jpg" data-lb data-cap="ComfyUI 生产工作流" alt="工作流"></figure>
+    </div>
+
+    <div style="margin-top:90px">
+      <div class="rv"><span class="chip2 en">03 / DESIGN DELIVERY</span></div>
+      <h2 class="h2 rv" style="--d:.06s;font-size:clamp(24px,3vw,34px)">设计<span class="acc">落地</span></h2>
+      <div class="ig ig3 nocrop">
+        <figure class="rv" style="--d:.05s"><img src="img/s21_04_c.jpg" data-lb data-cap="落地样片" loading="lazy" alt=""><figcaption>落地样片 · 一</figcaption></figure>
+        <figure class="rv" style="--d:.12s"><img src="img/s21_03_c.jpg" data-lb data-cap="落地样片" loading="lazy" alt=""><figcaption>落地样片 · 二</figcaption></figure>
+        <figure class="rv" style="--d:.19s"><img src="img/s21_05_c.jpg" data-lb data-cap="落地样片" loading="lazy" alt=""><figcaption>落地样片 · 三</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= P4 南香 ================= -->
+<section class="phero" id="p4" data-acc="#cbb289" data-accd="rgba(203,178,137,.14)" style="--acc:#cbb289;--acc-soft:rgba(203,178,137,.14)">
+  <div class="pimg" style="background-image:url(img/s24_00.jpg);inset:0 0 -8% 0"></div>
+  <div class="shade"></div>
+  <div class="pt"><div class="wrap">
+    <div>
+      <div class="pen en rv">CHAPTER 04 · BRAND VISUAL DESIGN</div>
+      <h2 class="big rv" style="--d:.1s">南香 · 品牌视觉设计</h2>
+      <div class="pen rv" style="--d:.18s;letter-spacing:.14em">南有名香，寄君相思</div>
+    </div>
+    <div class="pnums">
+      <div class="rv" style="--d:.2s"><b data-n="12"> 项</b><span>A 基础系统</span></div>
+      <div class="rv" style="--d:.28s"><b data-n="12"> 类</b><span>B 应用系统</span></div>
+      <div class="rv" style="--d:.36s"><b data-n="4"> 段</b><span>爱情叙事 IP</span></div>
+    </div>
+  </div></div>
+</section>
+
+<section class="sec" data-acc="#cbb289" data-accd="rgba(203,178,137,.14)" style="--acc:#cbb289;--acc-soft:rgba(203,178,137,.14)">
+  <div class="wrap">
+    <p class="sub2 rv" style="max-width:860px">NAN XIANG · 东方天然香氛品牌。以「气味是情感的触发器」为原点，将中国文化与当代设计语言结合，提供「寄香」服务——让每一次赠予，都成为可以留存的情绪载体。</p>
+
+    <div class="g3">
+      <div class="card rv"><div class="no">01</div><h4>市场语境</h4><p>东方香氛赛道快速升温，但视觉表达两极：或堆砌仿古符号，或照搬西式话语，缺少一套当代东方语法。</p></div>
+      <div class="card rv" style="--d:.1s"><div class="no">02</div><h4>品牌初衷</h4><p>「气味是一种强大的情感触发器，能够唤起人们最深层的记忆和情感。」</p></div>
+      <div class="card rv" style="--d:.2s"><div class="no">03</div><h4>核心洞察</h4><p>香是无形的：再动人的气味，也无法被随身带走。设计机会——把「香」装进「信」里，寄香即寄情。</p></div>
+    </div>
+
+    <div class="rv" style="margin-top:80px;text-align:center">
+      <span class="chip2 en">STRATEGY & POSITIONING</span>
+      <div class="big" style="font-size:clamp(30px,5vw,58px);font-weight:900">以物寄情 · 把「寄香」翻译成<span style="color:var(--acc)">「写信」</span></div>
+      <div class="tags" style="margin-top:26px;justify-content:center">
+        <i>温润</i><i>书卷</i><i>仪式</i><i>当代</i>
+      </div>
+    </div>
+
+    <div class="rv" style="margin-top:90px"><span class="chip2 en">04 / LOGO SYSTEM</span></div>
+    <h2 class="h2 rv" style="--d:.06s;font-size:clamp(24px,3vw,34px)">标志设计<span class="acc">与规范</span></h2>
+    <p class="sub2 rv" style="--d:.1s;margin-top:12px">以宋体骨架立书卷之气，收笔圆钝取香丸手感；中文与西文上下咬合，构成一枚可独立使用的「字印」。</p>
+    <div class="ig ig4">
+      <figure class="rv" style="--d:.05s"><img src="img/s27_29.jpg" data-lb data-cap="A1-03 网格制图" loading="lazy" alt=""><figcaption>A1-03 网格制图 · 固定标志骨架</figcaption></figure>
+      <figure class="rv" style="--d:.12s"><img src="img/s27_18.jpg" data-lb data-cap="标志墨稿（反白）" loading="lazy" alt=""><figcaption>A1-04 标志墨稿 · 覆盖印刷与深色背景</figcaption></figure>
+      <figure class="rv" style="--d:.19s"><img src="img/s27_22.jpg" data-lb data-cap="不可侵犯区域" loading="lazy" alt=""><figcaption>A1-05 不可侵犯区域 · 以标志高度划定</figcaption></figure>
+      <figure class="rv" style="--d:.26s"><img src="img/s27_26.jpg" data-lb data-cap="中西文组合" loading="lazy" alt=""><figcaption>中西文上下咬合 · 字印一体</figcaption></figure>
+    </div>
+
+    <div class="rv" style="margin-top:90px"><span class="chip2 en">05 / COLOR · TYPE · PATTERN</span></div>
+    <h2 class="h2 rv" style="--d:.06s;font-size:clamp(24px,3vw,34px)">色彩 · 字体 · <span class="acc">辅助图形</span></h2>
+    <div class="swrow rv">
+      <div class="sw" style="background:#AEA49C;flex-grow:7"><div><b style="color:#26221e">茶灰 #AEA49C</b><span style="color:#3a352f">宣纸与茶席 · 主色 70%</span></div></div>
+      <div class="sw" style="background:#33373E;flex-grow:2.5"><div><b>黛蓝 #33373E</b><span>夜色与墨 · 辅色 25%</span></div></div>
+      <div class="sw" style="background:#71151A;flex-grow:1.4"><div><b>枣红 #71151A</b><span>朱印点缀 5%</span></div></div>
+    </div>
+    <div class="swatches rv" style="margin-top:30px">
+      <i data-c="#A85555" style="background:#A85555"></i><i data-c="#80B5C3" style="background:#80B5C3"></i>
+      <i data-c="#AAC7B4" style="background:#AAC7B4"></i><i data-c="#FFFDFB" style="background:#FFFDFB"></i>
+      <i data-c="#8D959E" style="background:#8D959E"></i><i data-c="#D7D1B2" style="background:#D7D1B2"></i>
+      <i data-c="#CDCBD9" style="background:#CDCBD9"></i><i data-c="#D1AAAB" style="background:#D1AAAB"></i>
+      <i data-c="#C3CCAC" style="background:#C3CCAC"></i><i data-c="#BF9C7C" style="background:#BF9C7C"></i>
+      <span style="font-size:12px;color:var(--tx3);align-self:center;margin-left:8px">← 品牌辅助色 10 支（A1-07），悬停查看色值</span>
+    </div>
+    <div class="g2" style="margin-top:40px;align-items:start">
+      <figure class="banner rv" style="margin-top:0"><img src="img/s28_17.jpg" data-lb data-cap="专用印刷与发布字体" loading="lazy" alt=""></figure>
+      <div>
+        <p class="sub2" style="font-size:14px">标题用宋体体系，正文取楷体与手写体，印章与封签用篆隶——保留书写温度（A1-10 / A1-11）。</p>
+        <div class="g2" style="gap:16px;margin-top:20px">
+          <figure class="banner rv" style="margin-top:0"><img src="img/s28_42.jpg" data-lb data-cap="辅助图形" loading="lazy" alt=""></figure>
+          <figure class="banner rv" style="margin-top:0"><img src="img/s28_44.jpg" data-lb data-cap="辅助图形应用" loading="lazy" alt=""></figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="rv" style="margin-top:90px"><span class="chip2 en">06 / NARRATIVE IP</span></div>
+    <h2 class="h2 rv" style="--d:.06s;font-size:clamp(24px,3vw,34px)">叙事内容系统 · <span class="acc">四大爱情叙事</span></h2>
+    <figure class="banner rv" style="margin-top:30px"><img src="img/s29_21.jpg" data-lb data-cap="四大爱情叙事 · 视觉延展" loading="lazy" alt=""></figure>
+    <div class="story4">
+      <div class="story rv" style="--d:.05s"><h5>《红楼梦》</h5><div class="who">贾宝玉 · 林黛玉</div><p>一段「木石前盟」，取其怅惘与余味</p></div>
+      <div class="story rv" style="--d:.12s"><h5>《西厢记》</h5><div class="who">张生 · 崔莺莺</div><p>待月西厢，取其等候与暗许</p></div>
+      <div class="story rv" style="--d:.19s"><h5>《梁祝》</h5><div class="who">梁山伯 · 祝英台</div><p>化蝶双飞，取其缠绵与决绝</p></div>
+      <div class="story rv" style="--d:.26s"><h5>《凤求凰》</h5><div class="who">司马相如 · 卓文君</div><p>琴挑凰兮，取其奔赴与坦荡</p></div>
+    </div>
+    <div class="note rv" style="margin-top:24px">📖 四段「以物寄情」的经典，为香型命名、插画与包装提供可分季延展的内容资产——<b>叙事不止于装饰，而是品牌的 IP 库</b>。</div>
+
+    <div class="rv" style="margin-top:90px"><span class="chip2 en">07 / APPLICATION SYSTEM</span></div>
+    <h2 class="h2 rv" style="--d:.06s;font-size:clamp(24px,3vw,34px)">应用系统 · <span class="acc">从规范到实物</span></h2>
+    <div class="drag hv">
+      <div class="dc" style="width:460px"><img src="img/s30_06.jpg" data-lb data-cap="发光门牌 B1-01"><div class="cap">发光门牌 · B1-01</div></div>
+      <div class="dc" style="width:460px"><img src="img/s30_09.jpg" data-lb data-cap="香薰蜡烛礼盒 B1-05"><div class="cap">NAN XIANG 蜡烛礼盒 · B1-05</div></div>
+      <div class="dc" style="width:300px"><img src="img/s30_12.jpg" data-lb data-cap="线香包装 B1-07"><div class="cap">线香包装 · B1-07</div></div>
+      <div class="dc" style="width:300px"><img src="img/s30_15.jpg" data-lb data-cap="信封 · 火漆印 B1-08"><div class="cap">信封 · 火漆印 · B1-08</div></div>
+      <div class="dc" style="width:340px"><img src="img/s30_18.jpg" data-lb data-cap="香薰蜡烛单品 B1-04"><div class="cap">香薰蜡烛单品 · B1-04</div></div>
+      <div class="dc" style="width:260px"><img src="img/s30_21.jpg" data-lb data-cap="品牌手提袋 B1-09"><div class="cap">品牌手提袋 · B1-09</div></div>
+    </div>
+    <div class="edge en"><span>← DRAG</span><span>12 类应用 · SLIDE →</span></div>
+
+    <div class="rv" style="margin-top:90px"><span class="chip2 en">08 / DELIVERY & REVIEW</span></div>
+    <h2 class="h2 rv" style="--d:.06s;font-size:clamp(24px,3vw,34px)">落地交付<span class="acc">与项目总结</span></h2>
+    <figure class="banner rv" style="margin-top:30px"><img src="img/s31_05.jpg" data-lb data-cap="整案拼版 · A 基础系统 12 项 + B 应用系统 12 类" loading="lazy" alt=""></figure>
+    <div class="g3" style="margin-top:30px">
+      <div class="card rv"><h4>交付</h4><p>完整 VI 手册：A 基础系统 12 项（SLOGAN、标志规范、色彩、字体、辅助图形）+ B 应用系统 12 类（门牌、包装、香片、线香、信封等）。</p></div>
+      <div class="card rv" style="--d:.1s"><h4>验证</h4><p>核心物料以实拍落地校验：包装、信封、门牌与空间均完成实物呈现，在真实材质与光线下复核规范还原度。</p></div>
+      <div class="card rv" style="--d:.2s"><h4>复盘</h4><p>品牌动作「寄香」被翻译成视觉母题「写信」——信封、香片、印章因此不只是物料，而是叙事本身。</p></div>
+    </div>
+    <p class="rv" style="text-align:center;margin-top:60px;font-size:clamp(18px,2.4vw,26px);letter-spacing:.3em;color:var(--tx2)">愿君闻此香，莞然自人间。</p>
+    <p class="rv en" style="text-align:center;font-size:11px;letter-spacing:.3em;color:var(--tx3);margin-top:10px">MAY YOU SMELL THIS FRAGRANCE AND ENJOY THE BEAUTY OF THE WORLD.</p>
+  </div>
+</section>
+
+<!-- ================= END ================= -->
+<footer id="end">
+  <div class="wrap">
+    <div class="script rv" style="font-family:'Snell Roundhand','Brush Script MT',cursive;font-style:italic;font-size:clamp(28px,4vw,52px);background:linear-gradient(92deg,#ff8fb1,#f5c86b,#9b8cff);-webkit-background-clip:text;background-clip:text;color:transparent">Anne Thank You</div>
+    <div class="big rv" style="--d:.1s"><b>T</b>HANK YOU<span style="color:var(--acc)">.</span></div>
+    <div class="contact">
+      <a class="rv" style="--d:.15s" href="tel:15757978292">📞 157-5797-8292</a>
+      <a class="rv" style="--d:.22s" href="mailto:2196576657@qq.com">✉️ 2196576657@qq.com</a>
+      <a class="rv" style="--d:.29s" href="#hero">↑ 回到顶部</a>
+    </div>
+    <div class="fin rv" style="--d:.36s">© 2026 ZHOU KE ANNE · AIGC CONTENT OPERATION & AI PRODUCT DESIGN</div>
+  </div>
+</footer>
+
+<!-- ================= 灯箱 ================= -->
+<div id="lb">
+  <button class="x" onclick="lbClose()">✕</button>
+  <button class="pv" onclick="lbNav(-1)">‹</button>
+  <img id="lbImg" src="" alt="">
+  <video id="lbVid" controls playsinline preload="auto"></video>
+  <button class="nx" onclick="lbNav(1)">›</button>
+  <div class="ct" id="lbCt"></div>
+</div>
+
+<script>
+/* ---------- 入场动画 ---------- */
+const io = new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      // 计数器
+      e.target.querySelectorAll('[data-n]').forEach(runNum);
+      if(e.target.dataset.n!==undefined) runNum(e.target);
+      // 条形图
+      e.target.querySelectorAll('.br').forEach(runBar);
+      if(e.target.classList.contains('br')) runBar(e.target);
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:.18});
+document.querySelectorAll('.rv,.rvl,.stat,.br').forEach(el=>io.observe(el));
+
+/* ---------- 数字滚动 ---------- */
+function runNum(el){
+  if(el.dataset.done) return; el.dataset.done=1;
+  const n=parseFloat(el.dataset.n)||0, pre=el.dataset.pre||'', suf=el.textContent.replace(/[\d,]/g,'');
+  /* 数字卡片（.stat .n）后缀缩到 55%，避免「5,180+」「4× 产能」横向溢出被截断 */
+  const sufHtml = suf ? (el.closest('.stat') ? '<s>'+suf+'</s>' : suf) : '';
+  const t0=performance.now(), D=1600;
+  (function f(t){
+    const p=Math.min((t-t0)/D,1), v=Math.floor(n*(1-Math.pow(1-p,3)));
+    el.innerHTML=pre+v.toLocaleString()+sufHtml;
+    if(p<1) requestAnimationFrame(f);
+  })(t0);
+}
+
+/* ---------- 条形图 ---------- */
+function runBar(br){
+  if(br.dataset.done) return; br.dataset.done=1;
+  const to=parseFloat(br.dataset.to), max=parseFloat(br.dataset.max);
+  br.classList.add('go');
+  requestAnimationFrame(()=>br.querySelector('.fill').style.width=(to/max*100)+'%');
+}
+
+/* ---------- 导航高亮 + 进度条 + 章节换色 ---------- */
+const links=[...document.querySelectorAll('#nav .links a')];
+const chapters=[...document.querySelectorAll('section[id],header[id]')];
+function hex2rgba(h,a){const v=parseInt(h.slice(1),16);return `rgba(${v>>16&255},${v>>8&255},${v&255},${a})`}
+addEventListener('scroll',()=>{
+  const st=scrollY, H=document.documentElement.scrollHeight-innerHeight;
+  document.getElementById('bar').style.width=(st/H*100)+'%';
+  let cur=null;
+  chapters.forEach(s=>{if(st>=s.offsetTop-innerHeight*.4) cur=s.id});
+  links.forEach(a=>a.classList.toggle('on',a.dataset.t===cur));
+  // 换主题色
+  const sec=cur?document.getElementById(cur):null;
+  const acc=sec&&sec.dataset.acc?sec.dataset.acc:'#ff4d7e';
+  const soft=sec&&sec.dataset.accd?sec.dataset.accd:'rgba(255,77,126,.14)';
+  document.documentElement.style.setProperty('--acc',acc);
+  document.documentElement.style.setProperty('--acc-soft',soft);
+},{passive:true});
+
+/* ---------- Tabs ---------- */
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
+  document.querySelectorAll('.pane').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');
+  document.getElementById(b.dataset.p).classList.add('on');
+}));
+
+/* ---------- 拖动画廊 ---------- */
+document.querySelectorAll('.drag').forEach(d=>{
+  let down=false,sx=0,sl=0,moved=false;
+  d.addEventListener('pointerdown',e=>{down=true;moved=false;sx=e.clientX;sl=d.scrollLeft;d.classList.add('grabbing')});
+  addEventListener('pointermove',e=>{if(!down)return;const dx=e.clientX-sx;if(Math.abs(dx)>4)moved=true;d.scrollLeft=sl-dx});
+  addEventListener('pointerup',()=>{down=false;d.classList.remove('grabbing')});
+  d.addEventListener('click',e=>{if(moved){e.preventDefault();e.stopPropagation()}},true);
+});
+
+/* ---------- 视差 ---------- */
+const plxs=[...document.querySelectorAll('.pimg')];
+function plx(){
+  plxs.forEach(p=>{
+    const r=p.parentElement.getBoundingClientRect();
+    if(r.bottom<0||r.top>innerHeight) return;
+    const c=(r.top+r.height/2-innerHeight/2)/innerHeight;
+    p.style.transform=`translateY(${c*9}%) scale(1.02)`;
+  });
+}
+plx();
+addEventListener('scroll',plx,{passive:true});
+addEventListener('resize',plx);
+
+/* ---------- 首页卡片倾斜 ---------- */
+const tilt=document.getElementById('tilt');
+if(tilt&&matchMedia('(pointer:fine)').matches){
+  const cds=tilt.querySelectorAll('.cd'), base=[[-7,0],[2,6],[6,-4]];
+  addEventListener('mousemove',e=>{
+    const x=(e.clientX/innerWidth-.5), y=(e.clientY/innerHeight-.5);
+    cds.forEach((c,i)=>{
+      const r=base[i];
+      c.style.transform=`rotate(${r[0]+x*4}deg) translate(${x*(10+i*6)}px,${y*(12+i*4)}px)`;
+    });
+  });
+}
+
+/* ---------- 框内长图滑动 ---------- */
+document.querySelectorAll('[data-vs]').forEach(box=>{
+  const wrap=box.parentElement;
+  const hint=wrap.querySelector('.vs-hint');
+  const prog=wrap.querySelector('[data-vsp]');
+  const upd=()=>{
+    const max=box.scrollHeight-box.clientHeight;
+    const p=max>0?box.scrollTop/max:0;
+    if(prog) prog.style.width=(p*100)+'%';
+    if(hint&&box.scrollTop>40) hint.classList.add('gone');
+  };
+  box.addEventListener('scroll',upd,{passive:true});
+  let played=false;
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(!e.isIntersecting||played) return;
+      played=true;
+      let t=0;
+      setTimeout(()=>{
+        const step=()=>{
+          t+=0.02;
+          box.scrollTop=Math.sin(Math.min(t,1)*Math.PI)*130;
+          upd();
+          if(t<1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      },900);
+    });
+  },{threshold:.35});
+  io.observe(box);
+});
+
+/* ---------- 活动长图：四联横向滑动 ---------- */
+document.querySelectorAll('[data-hs]').forEach(sl=>{
+  const track=sl.querySelector('.hs-track');
+  const slides=[...sl.querySelectorAll('.hs-slide')];
+  const root=sl.closest('figure')||sl.parentElement;
+  const tabs=[...(root?root.querySelectorAll('[data-hstabs] button'):[])];
+  const idxEl=root?root.querySelector('[data-hsidx]'):null;
+  const panels=[...document.querySelectorAll('[data-hspanels] .hs-panel')];
+  const n=slides.length; let i=0;
+  const go=k=>{
+    i=(k+n)%n;
+    track.style.transform='translateX('+(-i*100)+'%)';
+    tabs.forEach((b,j)=>b.classList.toggle('on',j===i));
+    panels.forEach((p,j)=>p.classList.toggle('on',j===i));
+    if(idxEl) idxEl.textContent=String(i+1).padStart(2,'0')+' / '+String(n).padStart(2,'0');
+    const box=slides[i].querySelector('.vscroll');   /* 换活动后长图回到顶部 */
+    if(box){ box.scrollTop=0; }
+  };
+  tabs.forEach((b,j)=>b.addEventListener('click',()=>go(j)));
+  const prev=sl.querySelector('.hs-arrow.prev'), next=sl.querySelector('.hs-arrow.next');
+  if(prev) prev.addEventListener('click',()=>go(i-1));
+  if(next) next.addEventListener('click',()=>go(i+1));
+  /* 触屏左右滑动切换活动（纵向滚动优先，避免和长图上下滑冲突） */
+  let x0=null,y0=null;
+  sl.addEventListener('touchstart',e=>{x0=e.touches[0].clientX;y0=e.touches[0].clientY;},{passive:true});
+  sl.addEventListener('touchend',e=>{
+    if(x0===null) return;
+    const dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0;
+    if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)) go(i+(dx<0?1:-1));
+    x0=null; y0=null;
+  },{passive:true});
+  go(0);
+});
+
+/* ---------- 板块卡片：进入视口自动展开首张，展开即自动播放 ---------- */
+const gal=document.querySelector('.acc-gal');
+let autoAg=null;
+function agOn(ag){ ag.classList.add('on'); tilesStart(ag); }
+function agOff(ag){ ag.classList.remove('on'); tilesStop(ag); }
+/* keep=true：只是暂时让位给鼠标所在的卡片，移开后恢复 */
+function clearAuto(keep){
+  if(!autoAg) return;
+  agOff(autoAg);
+  if(!keep) autoAg=null;
+}
+document.querySelectorAll('.acc-gal .ag').forEach(ag=>{
+  ag.addEventListener('click',e=>{
+    /* 点在样例格子上交给灯箱处理，不能顺手把卡片收起 */
+    if(e.target.closest('.tp')) return;
+    clearAuto(false);
+    const was=ag.classList.contains('on');
+    gal.querySelectorAll('.ag').forEach(x=>{ x.classList.remove('on'); tilesStop(x); });
+    if(!was) agOn(ag);
+  });
+  ag.addEventListener('mouseenter',()=>{
+    if(ag===autoAg) return;
+    clearAuto(true);          /* 暂时收起自动展开的那张，交给当前卡片 */
+    tilesStart(ag);
+  });
+  ag.addEventListener('mouseleave',()=>{
+    if(ag===autoAg) return;
+    tilesStop(ag);
+    if(autoAg) agOn(autoAg);  /* 恢复自动展开的卡片 */
+  });
+});
+if(gal){
+  /* 滚动驱动：快滚到时先探测环境（能不能放视频），进入视口就自动展开首张含视频的卡片并开始播放 */
+  const near=()=>{ const r=gal.getBoundingClientRect(); return r.top<innerHeight+600; };
+  const seen=()=>{ const r=gal.getBoundingClientRect(); return r.top<innerHeight*.78&&r.bottom>0; };
+  let probed=false;
+  function galTick(){
+    if(!probed&&near()){ probed=true; probeEnv(); }
+    if(!autoAg&&seen()){
+      autoAg=[...gal.querySelectorAll('.ag')].find(a=>a.querySelector('.tp.vid'))||gal.querySelector('.ag');
+      if(autoAg) agOn(autoAg);
+    }
+  }
+  addEventListener('scroll',galTick,{passive:true});
+  addEventListener('resize',galTick);
+  addEventListener('load',galTick);
+  galTick();
+}
+
+/* ---------- 灯箱 ---------- */
+const lbs=[...document.querySelectorAll('[data-lb]')];
+let lbi=0;
+const lb=document.getElementById('lb'), lbImg=document.getElementById('lbImg'), lbCt=document.getElementById('lbCt'),
+      lbVid=document.getElementById('lbVid');
+/* ---- 视频源选择：优先 mp4(H.264)；浏览器不支持 H.264 时自动切 WebM(VP9) 兜底 ---- */
+const _probe=document.createElement('video');
+const CAN_H264=_probe.canPlayType('video/mp4; codecs="avc1.42E01E"')!=='';
+function pickVid(el){
+  const webm=el.dataset.webm;
+  return (CAN_H264||!webm)?(el.dataset.vid||el.dataset.src):webm;
+}
+/* 统一播放：先带声播，被自动播放策略拦下则静音重试；源报错则换另一种格式再试一次 */
+function tryPlay(v,el,tried,ok,fail){
+  v.onerror=()=>{
+    if(tried) return;
+    const cur=v.getAttribute('src')||'';
+    const alt=cur.endsWith('.mp4')?el.dataset.webm:el.dataset.vid;
+    if(alt&&alt!==cur){ v.setAttribute('src',alt); v.load(); tryPlay(v,el,true,ok,fail); }
+    else{
+      if(el&&el.dataset.gif) el.dataset.gifmode='1';   /* 记住：本环境视频不可用 */
+      if(fail) fail();
+      else if(lbCt) lbCt.textContent='视频无法在当前环境播放 · 悬停可看动图预览';
+    }
+  };
+  const p=v.play();
+  if(p) p.then(()=>{ if(ok) ok(); }).catch(()=>{ v.muted=true; const q=v.play(); if(q) q.then(()=>{if(ok)ok();}).catch(()=>{}); });
+}
+lbs.forEach(el=>el.addEventListener('click',e=>{
+  if(e.defaultPrevented) return;
+  lbi=lbs.indexOf(el); lbShow();
+}));
+function lbShow(){
+  const el=lbs[lbi], isVid=!!el.dataset.vid;
+  const noVid=isVid&&(el.dataset.gifmode||VID_OK.v===false);   /* 该环境已确认放不了视频 */
+  lb.classList.toggle('vid',isVid&&!noVid);
+  lb.classList.toggle('gif',!!noVid&&!!el.dataset.gif);
+  if(noVid){
+    lbVid.pause(); lbVid.onerror=null; lbVid.removeAttribute('src');
+    lbImg.src=el.dataset.gif||el.dataset.cover||el.querySelector('img').getAttribute('src');
+  }else if(isVid){
+    const src=pickVid(el);
+    if(lbVid.getAttribute('src')!==src){ lbVid.setAttribute('src',src); lbVid.load(); }
+    lbVid.onerror=null; lbVid.muted=false;
+    try{ lbVid.currentTime=0; }catch(_){}
+    tryPlay(lbVid,el,false,null,()=>{
+      /* 两种视频格式都失败 → 灯箱直接放动图 */
+      el.dataset.gifmode='1'; lb.classList.remove('vid');
+      if(el.dataset.gif){ lb.classList.add('gif'); lbImg.src=el.dataset.gif; lbCt.textContent='动图预览（3 秒循环）· 完整视频请在浏览器中打开'; }
+    });
+  }else{
+    lbVid.pause(); lbVid.removeAttribute('src');
+    lbImg.src=el.dataset.src||el.src;
+  }
+  lbCt.textContent=(lbi+1)+' / '+lbs.length+(el.dataset.cap?' · '+el.dataset.cap:'')
+    +(noVid?' · 动图预览（3 秒循环）':'');
+  lb.classList.add('on'); document.body.style.overflow='hidden';
+}
+function lbClose(){
+  lb.classList.remove('on'); document.body.style.overflow='';
+  lbVid.pause(); lbVid.onerror=null; lbVid.removeAttribute('src'); try{lbVid.load()}catch(_){}
+}
+function lbNav(d){lbi=(lbi+d+lbs.length)%lbs.length;lbShow()}
+lb.addEventListener('click',e=>{if(e.target===lb)lbClose()});
+addEventListener('keydown',e=>{
+  if(!lb.classList.contains('on'))return;
+  if(e.key==='Escape')lbClose();
+  if(e.key==='ArrowLeft')lbNav(-1);
+  if(e.key==='ArrowRight')lbNav(1);
+  if(e.key===' '&&lb.classList.contains('vid')){e.preventDefault();lbVid.paused?tryPlay(lbVid,lbs[lbi],false):lbVid.pause()}
+});
+
+/* ---------- 板块模板：卡片一展开就整组自动播放（视频优先，放不了自动落动图） ---------- */
+/* 环境探测：只做一次，判断本环境到底能不能放视频（预览面板不放行 mp4/webm → 直接走动图） */
+const VID_OK={v:null,started:false,q:[]};
+function probeEnv(cb){
+  if(cb) VID_OK.q.push(cb);
+  const flush=ok=>{ VID_OK.q.splice(0).forEach(f=>{ try{f(ok)}catch(_){} }); };
+  if(VID_OK.v!==null){ flush(VID_OK.v); return; }
+  if(VID_OK.started) return;
+  VID_OK.started=true;
+  const first=document.querySelector('.tp.vid');
+  if(!first){ VID_OK.v=false; flush(false); return; }
+  const t=document.createElement('video');
+  t.muted=true; t.playsInline=true; t.preload='auto';
+  let done=false;
+  const fin=ok=>{
+    if(done) return; done=true; VID_OK.v=ok;
+    try{t.removeAttribute('src');t.load()}catch(_){}
+    flush(ok);
+  };
+  t.addEventListener('loadeddata',()=>fin(true));
+  t.addEventListener('canplay',()=>fin(true));
+  t.addEventListener('error',()=>fin(false));
+  t.src=pickVid(first); t.load();
+  setTimeout(()=>fin(t.readyState>=2),2000);
+}
+document.querySelectorAll('.tp.vid').forEach(f=>{
+  const v=f.querySelector('video'), im=f.querySelector('img'), cap=f.querySelector('.tp-cap');
+  const cover=im.getAttribute('src')||f.dataset.cover, gif=f.dataset.gif;
+  const toGif=()=>{
+    if(f.dataset.gifmode) return;
+    f.dataset.gifmode='1'; f.classList.add('gifmode');
+    if(cap) cap.textContent='动图预览 · 点击放大';
+  };
+  const gifOn=()=>{ if(gif&&im.getAttribute('src')!==gif) im.setAttribute('src',gif); f.classList.add('playing'); };
+  let tmr=null;
+  v.addEventListener('error',()=>{ toGif(); gifOn(); });
+  f._api={
+    start(){
+      /* 本环境放不了视频 → 直接上动图，不用等 */
+      if(VID_OK.v===false){ toGif(); gifOn(); return; }
+      if(!v.getAttribute('src')){ v.setAttribute('src',pickVid(f)); v.load(); }
+      v.muted=true;
+      tryPlay(v,f,false,()=>f.classList.add('playing'),()=>{ toGif(); gifOn(); });
+      clearTimeout(tmr);
+      tmr=setTimeout(()=>{ if(gif&&v.readyState<2){ f.classList.add('gifmode'); gifOn(); } },2000);
+    },
+    stop(){
+      clearTimeout(tmr);
+      f.classList.remove('playing');
+      v.pause(); try{v.currentTime=0}catch(_){}
+      if(!f.dataset.gifmode) f.classList.remove('gifmode');   /* 临时降级复原，下回继续试视频 */
+      if(im.getAttribute('src')!==cover) im.setAttribute('src',cover);
+    }
+  };
+});
+function tilesStart(ag){
+  probeEnv(()=>{ ag.querySelectorAll('.tp.vid').forEach(f=>{ if(f._api) f._api.start(); }); });
+}
+/* ============ 访问埋点已移除（回退版本） ============ */
+function tilesStop(ag){
+  ag.querySelectorAll('.tp.vid').forEach(f=>{ if(f._api) f._api.stop(); });
+}
+</script>
+</body>
+</html>
